@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['golf-plus.herokuapp.com', '8000-leec313-golfplus-gbsq0oolw0d.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['golf-plus-7affb451de4e.herokuapp.com', '8000-leec313-golfplus-gbsq0oolw0d.ws-eu105.gitpod.io']
 
 
 # Application definition
