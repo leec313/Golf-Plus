@@ -23,4 +23,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', PostListView.as_view(), name='home'),
     path('<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
+    path("accounts/", include("allauth.urls")),
 ]
