@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.views import generic, View
 from .models import Post, Comment
+from .forms import CommentForm
 
 
 class PostListView(ListView):
@@ -28,6 +29,7 @@ class PostDetailView(View):
             {
                 "post": post,
                 "comments": comments,
-                "liked": liked
+                "liked": liked,
+                "comment_form": CommentForm()
             },
         )
