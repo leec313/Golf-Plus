@@ -20,5 +20,5 @@ from blog.views import PostListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('posts/', PostListView.as_view()),
+    path('', PostListView.as_view()),
 ]
