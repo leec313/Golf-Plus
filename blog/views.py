@@ -152,12 +152,18 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class PostLike(View):
-    
+    """
+    View for liking a post. If liked, the view passes the information
+    to the template to show the updated icon for confirmation of like
+    """
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
+
+        # Toggle the like status for the user
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
 
+        # Redirect to the same URL to avoid issues with refreshing
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
