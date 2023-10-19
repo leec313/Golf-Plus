@@ -93,7 +93,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         response = super().form_valid(form)
 
         # Add a message to inform the user
-        messages.success(self.request, "Your post will display as soon as it is approved.")
+        messages.success(self.request,
+                         "Your post will displayas soon as it is approved.")
 
         return response
 
