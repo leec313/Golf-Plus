@@ -28,11 +28,12 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('', PostListView.as_view(), name='home'),
+    path('subscribe_newsletter/', subscribe_newsletter, name='subscribe_newsletter'),
     path('<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path("accounts/", include("allauth.urls")),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
     path('post/new/', PostCreateView.as_view(), name='post_new'),
     path('<slug:slug>/update/', PostUpdateView.as_view(), name='post_update'),
     path('<slug:slug>/delete/', PostDeleteView.as_view(), name='post_delete'),
-    path('subscribe_newsletter/', subscribe_newsletter, name='subscribe_newsletter'),]
+    path('', PostListView.as_view(), name='home'),
+]

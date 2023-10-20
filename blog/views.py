@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.generic import (
     ListView,
     DetailView,
@@ -183,15 +183,9 @@ def subscribe_newsletter(request):
         form = NewsletterSubscriptionForm(request.POST)
         if form.is_valid():
             form.save()
-            # You can add a success message or redirect to a thank you page
-            messages.success(self.request,
-                             "Thanks for subscribing.")
-                         
-        def get_success_url(self):
-            return reverse('index.html')
-
+            messages.success(request, "Thanks for subscribing.")
+            return redirect('home')
     else:
         form = NewsletterSubscriptionForm()
 
     return render(request, 'subscribe_modal.html', {'form': form})
-
