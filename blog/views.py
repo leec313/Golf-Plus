@@ -11,8 +11,8 @@ from django.http import HttpResponseRedirect
 from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post, Comment
-from .forms import CommentForm
+from .models import Post, Comment, NewsletterSubscription
+from .forms import CommentForm, NewsletterSubscriptionForm
 
 
 class PostListView(ListView):
@@ -25,6 +25,14 @@ class PostListView(ListView):
     queryset = Post.objects.filter(status=1).order_by("-created_on")
     template_name = "index.html"
     paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        """
+        Used for calling the newsletter modal form
+        """
+        context = super().get_context_data(**kwargs)
+        context['form'] = NewsletterSubscriptionForm()
+        return context
 
 
 class PostDetailView(DetailView):
@@ -168,3 +176,22 @@ class PostLike(View):
 
         # Redirect to the same URL to avoid issues with refreshing
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def subscribe_newsletter(request):
+    if request.method == 'POST':
+        form = NewsletterSubscriptionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # You can add a success message or redirect to a thank you page
+            messages.success(self.request,
+                             "Thanks for subscribing.")
+                         
+        def get_success_url(self):
+            return reverse('index.html')
+
+    else:
+        form = NewsletterSubscriptionForm()
+
+    return render(request, 'subscribe_modal.html', {'form': form})
+

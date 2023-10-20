@@ -12,7 +12,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='Your uploaded image')
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
@@ -46,3 +46,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
+
+
+class NewsletterSubscription(models.Model):
+    email = models.EmailField(unique=True)
