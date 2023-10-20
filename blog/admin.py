@@ -26,5 +26,5 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(NewsletterSubscription)
 class NewsletterAdmin(admin.ModelAdmin):
-    list_display = ('email',)
+    list_display = ('email', 'created_on')
     search_fields = ('email',)

@@ -50,3 +50,4 @@ class Comment(models.Model):
 
 class NewsletterSubscription(models.Model):
     email = models.EmailField(unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
