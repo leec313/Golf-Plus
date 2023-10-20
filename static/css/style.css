@@ -40,16 +40,21 @@ body {
 
 .image-flash {
     position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #23BBBB;
+    top: 5%;
+    min-width: 35%;
+    left: -20px;
+    background-color: #586f7c;
+    border: 1px solid #ffffff;
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
+    font-size: 14px;
 }
 
 .masthead {
@@ -107,18 +112,18 @@ body {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: #586f7c;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: #586f7c;
 }
 
 .link {
-    color: #23BBBB;
+    color: #586f7c;
     text-decoration: none;
 }
 
@@ -129,14 +134,15 @@ body {
 }
 
 .btn-like {
-    color: #E84610;
+    color: #8c2f39;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #8c2f39;
+    font-size: larger;
     background: transparent;
     border: none;
 }
@@ -187,7 +193,7 @@ form {
 
 /* Style for the subscribe button */
 button {
-    background-color: #23BBBB;
+    background-color: #586f7c;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -196,5 +202,19 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #b8dbd9;
+    color: #eef0eb
+}
+
+#msg {
+    background-color: #b8dbd9;
+}
+
+.footer {
+    background-color: #2f4550;
+}
+
+.btn-danger {
+    background-color: #8c2f39;
+    border-color: #8c2f39;
 }
