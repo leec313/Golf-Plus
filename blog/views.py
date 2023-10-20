@@ -55,6 +55,7 @@ class PostDetailView(DetailView):
         # Adding the comment form to the context
         comment_form = CommentForm()
         context['comment_form'] = comment_form
+        context['comments'] = comments
 
         return context
 
@@ -190,7 +191,8 @@ def subscribe_newsletter(request):
             messages.success(request, "Thanks for subscribing.")
             return redirect('home')
         else:
-            messages.error(request, "This email address is already subscribed.")
+            messages.error(request,
+                           "This email address is already subscribed.")
             return redirect('home')
 
     return render(request, 'subscribe_modal.html', {'form': form})

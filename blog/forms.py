@@ -6,6 +6,9 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+        widgets = {
+            'body': forms.Textarea(attrs={'placeholder': 'Your comment here'}),
+        }
 
 
 class NewsletterSubscriptionForm(forms.ModelForm):
@@ -15,4 +18,5 @@ class NewsletterSubscriptionForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Enter your email'})
+        self.fields['email'].widget.attrs.update(
+            {'class': 'form-control', 'placeholder': 'Enter your email'})
