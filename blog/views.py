@@ -179,13 +179,20 @@ class PostLike(View):
 
 
 def subscribe_newsletter(request):
+    user_already_subscribed = False
+
+    if request.user.is_authenticated:
+        # Check if the current user is already subscribed
+        user_already_subscribed = NewsletterSubscription.objects.filter(email=request.user.email).exists()
+
     if request.method == 'POST':
         form = NewsletterSubscriptionForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Thanks for subscribing.")
+            if not user_already_subscribed:
+                form.save()
+                messages.success(request, "Thanks for subscribing.")
             return redirect('home')
     else:
         form = NewsletterSubscriptionForm()
 
-    return render(request, 'subscribe_modal.html', {'form': form})
+    return render(request, 'subscribe_modal.html', {'form': form, 'user_already_subscribed': user_already_subscribed})
