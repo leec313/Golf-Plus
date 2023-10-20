@@ -179,7 +179,10 @@ class PostLike(View):
 
 
 def subscribe_newsletter(request):
-
+    """
+    Used to post the email the user inputs to the database and
+    displays a success/error message
+    """
     if request.method == 'POST':
         form = NewsletterSubscriptionForm(request.POST)
         if form.is_valid():
