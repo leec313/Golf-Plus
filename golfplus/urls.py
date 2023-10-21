@@ -30,6 +30,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('subscribe_newsletter/', subscribe_newsletter,
          name='subscribe_newsletter'),
+    path('posts/', PostListView.as_view(), name='post_list'),
     path('<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path("accounts/", include("allauth.urls")),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),

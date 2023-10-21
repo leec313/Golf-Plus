@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Comment, NewsletterSubscription
 from .forms import CommentForm, NewsletterSubscriptionForm
+from django.db.models import Q
 
 
 class PostListView(ListView):
@@ -33,6 +34,15 @@ class PostListView(ListView):
         context = super().get_context_data(**kwargs)
         context['form'] = NewsletterSubscriptionForm()
         return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_query = self.request.GET.get('search', None)
+
+        if search_query:
+            queryset = queryset.filter(Q(title__icontains=search_query))
+
+        return queryset
 
 
 class PostDetailView(DetailView):

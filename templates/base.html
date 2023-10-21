@@ -32,10 +32,10 @@
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+            <div class="collapse navbar-collapse order-lg-1" id="navbarText">
                 <div class="d-flex flex-lg-row flex-column justify-content-between align-items-center w-100">
-                    <div class="d-flex">
-                        <ul class="navbar-nav justify-content-start">
+                    <div class="d-flex align-items-center">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                             </li>
@@ -56,19 +56,33 @@
                             {% endif %}
                         </ul>
                     </div>
-                    <div class="text-center align-self-start">
-                        <a class="navbar-brand d-none d-lg-block" href="{% url 'home' %}"><span class="brand">Golf
-                                Plus</span></a>
+                    <div class="d-flex align-items-center justify-content-center flex-grow-1">
+                        <!-- Centered Brand -->
+                        <div class="d-none d-lg-block mx-auto order-lg-2">
+                            <a class="navbar-brand" href="{% url 'home' %}">
+                                <span class="brand">Golf Plus</span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="d-flex align-items-center d-none d-lg-block">
-                        <span class="navbar-text text-muted">
-                            Share Your Golfing Adventures
-                        </span>
+                    <div class="d-flex align-items-center">
+                        <form class="d-flex" method="get" action="{% url 'post_list' %}">
+                            <input class="form-control me-2" type="text" name="search" placeholder="Find a post...">
+                            <button class="btn search-btn" type="submit">Search</button>
+                        </form>
+                        <div class="d-flex align-items-center d-none d-lg-block">
+                            <span class="navbar-text text-muted">
+                                Share Your Golfing Adventures
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
+
+
+
 
     <div class="container">
         <div class="row">

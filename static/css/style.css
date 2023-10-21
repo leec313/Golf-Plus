@@ -235,3 +235,11 @@ input {
 ::placeholder {
     color: #fff;
 }
+
+.search-btn {
+    background-color: #586f7c;
+    color: #fff;
+    height: 38px;
+    margin-right: 15px;
+    border: 1px solid black;
+}
