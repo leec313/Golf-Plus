@@ -9,6 +9,10 @@
 <div id="newsletter-modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-text">
+            <legend class="border-bottom mb-4 mx-auto text-center">Ready For Your Next Golf Adventure?</legend>
+            <p class="mx-auto text-center">Subscribe to our Newsletter for the best course recommendations!</p>
+        </div>
         <form method="post" action="{% url 'subscribe_newsletter' %}">
             {% csrf_token %}
             {{ form|crispy }}
