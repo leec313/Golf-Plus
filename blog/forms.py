@@ -1,4 +1,5 @@
-from .models import Post, Comment, NewsletterSubscription
+from .models import Post, Comment, NewsletterSubscription, Profile
+from django.contrib.auth.models import User
 from django import forms
 
 
@@ -20,3 +21,15 @@ class NewsletterSubscriptionForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Enter your email'})
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
+class ImageUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['image']

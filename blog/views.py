@@ -12,7 +12,12 @@ from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post, Comment, NewsletterSubscription, Profile
-from .forms import CommentForm, NewsletterSubscriptionForm
+from .forms import (
+    CommentForm,
+    NewsletterSubscriptionForm,
+    ProfileUpdateForm,
+    ImageUpdateForm
+)
 from django.db.models import Q
 
 
@@ -216,4 +221,18 @@ def subscribe_newsletter(request):
 
 
 def ProfileView(request):
-    return render(request, 'profile.html')
+    user_form = ProfileUpdateForm(instance=request.user)
+    image_form = ImageUpdateForm(instance=request.user.profile)
+
+    if request.method == 'POST':
+        user_form = ProfileUpdateForm(request.POST, instance=request.user)
+        image_form = ImageUpdateForm(
+             request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and image_form.is_valid():
+            user_form.save()
+            image_form.save()
+            return redirect('profile')
+
+    return render(request, 'profile.html',
+                  {'user_form': user_form, 'image_form': image_form})
