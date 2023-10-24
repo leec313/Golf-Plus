@@ -7,6 +7,10 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
+                <!-- Checking if a post the user searched for was found - if not return "no posts found"-->
+                {% if no_results %}
+                <h2 class="text-center mt-3">No posts found.</h2>
+                {% else %}
                 {% for post in posts %}
                 <div class="col-md-4">
                     <div class="card mb-4">
@@ -37,7 +41,7 @@
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
+                {% endif %}
             </div>
         </div>
     </div>

@@ -44,6 +44,13 @@ class PostListView(ListView):
 
         return queryset
 
+    def render_to_response(self, context, **response_kwargs):
+        # Check if no posts are found based on the search query
+        if not context['posts']:
+            context['no_results'] = True  # Add a flag to indicate no results
+
+        return super().render_to_response(context, **response_kwargs)
+
 
 class PostDetailView(DetailView):
     """
