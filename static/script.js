@@ -26,7 +26,7 @@ window.onclick = function (event) {
     }
 };
 
-// Function to get a cookie value by name
+// Function to get a cookie value by name so the newsletter modal only shows up once for a user
 function getCookie(name) {
     var cookieArr = document.cookie.split(';');
     for (var i = 0; i < cookieArr.length; i++) {
@@ -38,6 +38,7 @@ function getCookie(name) {
     return null;
 }
 
+// timeout function for alert messages
 setTimeout(function () {
     let messages = document.getElementById('msg');
     let alert = new bootstrap.Alert(messages);
