@@ -125,7 +125,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
         # Add a message to inform the user
         messages.success(self.request,
-                         "Your post will displayas soon as it is approved.")
+                         "Your post will display as soon as it is approved.")
 
         return response
 
@@ -164,7 +164,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
-    View for showing a single post's details
+    View for deleting a single post
     """
     model = Post
     template_name = "post_confirm_delete.html"

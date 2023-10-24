@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4">Blog Post</legend>
@@ -18,5 +18,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
