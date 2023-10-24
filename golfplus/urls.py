@@ -21,7 +21,8 @@ from blog.views import (
     PostCreateView,
     PostUpdateView,
     PostDeleteView,
-    subscribe_newsletter
+    subscribe_newsletter,
+    ProfileView
 )
 from blog import views
 
@@ -30,6 +31,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('subscribe_newsletter/', subscribe_newsletter,
          name='subscribe_newsletter'),
+    path('profile/', ProfileView, name='profile'),
     path('posts/', PostListView.as_view(), name='post_list'),
     path('<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path("accounts/", include("allauth.urls")),

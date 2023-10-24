@@ -51,3 +51,11 @@ class Comment(models.Model):
 class NewsletterSubscription(models.Model):
     email = models.EmailField(unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = CloudinaryField('image', default='Profile image')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

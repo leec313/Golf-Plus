@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags static %}
+{% block content %}
+<div class="content-section text-center">
+    <div class="media">
+        {% if user.profile.image %}
+        <img class="rounded-circle account-img-sm" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+        {% else %}
+        <img class="rounded-circle account-img-sm" src="{% static 'default-images/profile.png' %}"
+            alt="{{ user.username }}">
+        {% endif %}
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

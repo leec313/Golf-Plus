@@ -243,3 +243,19 @@ input {
     margin-right: 15px;
     border: 1px solid black;
 }
+
+/* for profile page */
+
+.account-img-sm {
+    width: 80px;
+    /* Adjust the size as needed */
+    height: 80px;
+}
+
+.content-section {
+    max-width: 400px;
+
+    margin-left: 50px;
+    padding-top: 100px;
+
+}

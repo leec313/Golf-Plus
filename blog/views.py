@@ -4,14 +4,14 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
 )
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post, Comment, NewsletterSubscription
+from .models import Post, Comment, NewsletterSubscription, Profile
 from .forms import CommentForm, NewsletterSubscriptionForm
 from django.db.models import Q
 
@@ -213,3 +213,7 @@ def subscribe_newsletter(request):
             return redirect('home')
 
     return render(request, 'subscribe_modal.html', {'form': form})
+
+
+def ProfileView(request):
+    return render(request, 'profile.html')
