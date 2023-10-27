@@ -88,14 +88,14 @@
                 <div class="comments {% if forloop.counter|divisibleby:2 %}align-right{% else %}align-left{% endif %}">
                     <div class="font-weight-bold">
                         {% if forloop.counter|divisibleby:2 %}
-                        <div class="text-muted font-weight-normal">
+                        <div class="text-white">
                             {{ comment.created_on }}
                         </div>
                         {{ comment.name }}
                         <img class="comment-image" src="{{ comment.user.profile.image.url }}"
                             alt="{{ comment.user.username }}">
                         {% else %}
-                        <div class="text-muted font-weight-normal">
+                        <div class="text-white">
                             {{ comment.created_on }}
                         </div>
                         <img class="comment-image" src="{{ comment.user.profile.image.url }}"
@@ -109,21 +109,18 @@
                 {% endfor %}
             </div>
         </div>
-
-
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- When a user submits a comment, they will see an alert box for confirmation -->
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
+                    Comment posted!
                 </div>
                 {% else %}
                 {% if user.is_authenticated %}
-
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
+                <form method="post" style="margin-top: 1.3em;" id="comment-form">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>

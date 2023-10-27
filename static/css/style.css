@@ -303,15 +303,16 @@ input {
 
 .comments.align-left {
     text-align: left;
+    background-color: #2f4550;
 }
 
 .comments.align-right {
+    background-color: #586f7c;
     text-align: right;
     margin-right: 100px;
 }
 
 .comments {
-    background-color: #2f4550;
     color: #fff;
     margin: 25px;
     padding: 20px;
