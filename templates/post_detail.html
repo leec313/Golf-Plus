@@ -84,22 +84,32 @@
             <div class="card-body">
                 {% for comment in post.comments.all %}
                 {% if comment.approved %}
-                <div class="comments {% if forloop.counter|divisibleby:2 %}align-right{% else %}align-left{% endif %}"
-                    style="padding: 10px;">
-                    <p class="font-weight-bold">
+                <!-- below if/forloop aligns first comment left, second right and so on -->
+                <div class="comments {% if forloop.counter|divisibleby:2 %}align-right{% else %}align-left{% endif %}">
+                    <div class="font-weight-bold">
+                        {% if forloop.counter|divisibleby:2 %}
+                        <div class="text-muted font-weight-normal">
+                            {{ comment.created_on }}
+                        </div>
+                        {{ comment.name }}
+                        <img class="comment-image" src="{{ comment.user.profile.image.url }}"
+                            alt="{{ comment.user.username }}">
+                        {% else %}
+                        <div class="text-muted font-weight-normal">
+                            {{ comment.created_on }}
+                        </div>
                         <img class="comment-image" src="{{ comment.user.profile.image.url }}"
                             alt="{{ comment.user.username }}">
                         {{ comment.name }}
-                        <span class="text-muted font-weight-normal">
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
+                        {% endif %}
+                    </div>
                     {{ comment.body | linebreaks }}
                 </div>
                 {% endif %}
                 {% endfor %}
             </div>
         </div>
+
 
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
