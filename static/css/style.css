@@ -272,3 +272,10 @@ input {
 .fab:hover {
     background-color: #b8dbd9;
 }
+
+.draft-status {
+    background-color: #b8dbd9;
+    top: 65%;
+    left: 60%;
+    height: 30px;
+}

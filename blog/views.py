@@ -19,6 +19,7 @@ from .forms import (
     ImageUpdateForm
 )
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class PostListView(ListView):
@@ -229,6 +230,17 @@ def subscribe_newsletter(request):
 def ProfileView(request):
     user_form = ProfileUpdateForm(instance=request.user)
     image_form = ImageUpdateForm(instance=request.user.profile)
+    user_posts = Post.objects.filter(author=request.user)
+
+    # Pagination
+    page = request.GET.get('page', 1)
+    paginator = Paginator(user_posts, 6)  # Show 3 posts per page
+    try:
+        user_posts = paginator.page(page)
+    except PageNotAnInteger:
+        user_posts = paginator.page(1)
+    except EmptyPage:
+        user_posts = paginator.page(paginator.num_pages)
 
     if request.method == 'POST':
         user_form = ProfileUpdateForm(request.POST, instance=request.user)
@@ -241,4 +253,5 @@ def ProfileView(request):
             return redirect('profile')
 
     return render(request, 'profile.html',
-                  {'user_form': user_form, 'image_form': image_form})
+                  {'user_form': user_form,
+                   'image_form': image_form, 'user_posts': user_posts})
