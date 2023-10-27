@@ -22,7 +22,8 @@ from blog.views import (
     PostUpdateView,
     PostDeleteView,
     subscribe_newsletter,
-    ProfileView
+    ProfileView,
+    delete_account
 )
 from blog import views
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('subscribe_newsletter/', subscribe_newsletter,
          name='subscribe_newsletter'),
     path('profile/', ProfileView, name='profile'),
+    path('delete_account/', delete_account, name='delete_account'),
     path('posts/', PostListView.as_view(), name='post_list'),
     path('<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path("accounts/", include("allauth.urls")),

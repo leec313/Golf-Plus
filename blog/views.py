@@ -20,6 +20,7 @@ from .forms import (
 )
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 
 class PostListView(ListView):
@@ -255,3 +256,13 @@ def ProfileView(request):
     return render(request, 'profile.html',
                   {'user_form': user_form,
                    'image_form': image_form, 'user_posts': user_posts})
+
+
+@login_required
+def delete_account(request):
+    if request.method == 'POST':
+        # Delete the user and redirect to the home page
+        request.user.delete()
+        return redirect('home')
+
+    return render(request, 'delete_account.html')
