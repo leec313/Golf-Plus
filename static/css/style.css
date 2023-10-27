@@ -275,7 +275,23 @@ input {
 
 .draft-status {
     background-color: #b8dbd9;
-    top: 65%;
-    left: 60%;
+    top: 60%;
     height: 30px;
+}
+
+.card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-created {
+    flex: 1;
+    /* Takes the available space */
+}
+
+.likes-comments-container {
+    display: flex;
+    gap: 10px;
+    /* Adjust the gap based on your design preferences */
 }
