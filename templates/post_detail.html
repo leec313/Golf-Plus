@@ -79,14 +79,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-8 card mb-4 mt-3">
             <h3>Comments:</h3>
             <div class="card-body">
-                <!-- Looping through all comments by accessing post.comment.all -->
                 {% for comment in post.comments.all %}
                 {% if comment.approved %}
-                <div class="comments" style="padding: 10px;">
+                <div class="comments {% if forloop.counter|divisibleby:2 %}align-right{% else %}align-left{% endif %}"
+                    style="padding: 10px;">
                     <p class="font-weight-bold">
+                        <img class="comment-image" src="{{ comment.user.profile.image.url }}"
+                            alt="{{ comment.user.username }}">
                         {{ comment.name }}
                         <span class="text-muted font-weight-normal">
                             {{ comment.created_on }}
@@ -98,6 +100,7 @@
                 {% endfor %}
             </div>
         </div>
+
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- When a user submits a comment, they will see an alert box for confirmation -->
