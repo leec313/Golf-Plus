@@ -45,7 +45,13 @@ class PostListView(ListView):
         search_query = self.request.GET.get('search', None)
 
         if search_query:
-            queryset = queryset.filter(Q(title__icontains=search_query))
+            # Use Q objects to combine filters with OR logic
+            queryset = queryset.filter(
+                Q(title__icontains=search_query) |
+                Q(author__username__icontains=search_query) |
+                Q(content__icontains=search_query) |
+                Q(excerpt__icontains=search_query)
+            )
 
         return queryset
 
