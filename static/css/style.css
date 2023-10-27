@@ -96,6 +96,15 @@ body {
     color: #445261;
 }
 
+.profile-post {
+    text-align: center;
+}
+
+.profile-post-button:hover {
+    background-color: #586f7c;
+    color: #fff;
+}
+
 .post-link:hover,
 .page-link {
     color: #E84610;

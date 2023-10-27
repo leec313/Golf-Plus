@@ -24,9 +24,9 @@
         <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete_account' %}">Delete Account</a>
     </div>
 </div>
+{% if user_posts %}
 <div class="container-fluid">
     <div class="row">
-
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -97,4 +97,12 @@
     </nav>
     {% endif %}
 </div>
+{% else %}
+<hr>
+<div class="profile-post">
+    <a class="btn profile-post-button" href="{% url 'post_new' %}">
+        <h3>Click here to create your first post!</h3>
+    </a>
+</div>
+{% endif %}
 {% endblock content %}
