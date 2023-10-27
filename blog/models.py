@@ -59,7 +59,8 @@ class NewsletterSubscription(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = CloudinaryField('image', default='Profile image')
+    image = CloudinaryField('image',
+                            default='https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698444280/b868mv6vciq3m4fixf3i.png')
 
     def __str__(self):
         return f'{self.user.username} Profile'
