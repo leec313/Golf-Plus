@@ -36,3 +36,7 @@ class ImageUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+    def __init__(self, *args, **kwargs):
+        super(ImageUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['image'].label = 'Profile Picture'
