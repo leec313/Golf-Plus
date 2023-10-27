@@ -1,5 +1,6 @@
 from .models import Post, Comment, NewsletterSubscription, Profile
 from django.contrib.auth.models import User
+from django.forms import ImageField, FileInput
 from django import forms
 
 
@@ -30,6 +31,8 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class ImageUpdateForm(forms.ModelForm):
+    image = ImageField(widget=FileInput)
+
     class Meta:
         model = Profile
         fields = ['image']

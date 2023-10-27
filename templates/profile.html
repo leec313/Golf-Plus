@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags static %}
 {% block content %}
-<div class="content-section text-center">
+<div class="content-section text-center max-w-50">
     <div class="media">
         {% if user.profile.image %}
         <img class="rounded-circle account-img-sm" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
@@ -14,11 +14,13 @@
             <p class="text-secondary">{{ user.email }}</p>
         </div>
     </div>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ user_form|crispy }}
-        {{ image_form|crispy }}
-        <button type="submit" class="btn btn-primary">Update Profile</button>
-    </form>
+    <div class="mx-auto my-4 profile-form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form|crispy }}
+            {{ image_form|crispy }}
+            <button type="submit" class="btn btn-primary btn-block profile-submit">Update Profile</button>
+        </form>
+    </div>
 </div>
 {% endblock content %}
