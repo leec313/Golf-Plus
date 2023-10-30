@@ -29,7 +29,10 @@
                                 </div>
                                 <a href="{% url 'post_detail' post.slug  %}" class="post-link">
                                     <h2 class="card-title">{{ post.title }}</h2>
-                                    <p class="card-text">{{ post.excerpt }}</p>
+                                    <p class="card-text">
+                                        <!-- If the excerpt exceeds 100 characters, it cuts it off -->
+                                        {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
+                                    </p>
                                 </a>
                                 <hr />
                                 <div class="card-text text-muted h6">

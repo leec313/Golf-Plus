@@ -16,7 +16,9 @@ from .forms import (
     CommentForm,
     NewsletterSubscriptionForm,
     ProfileUpdateForm,
-    ImageUpdateForm
+    ImageUpdateForm,
+    PostForm,
+    PostUpdateForm
 )
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -75,7 +77,6 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # Your existing logic for getting the post details
         post = context['post']
         comments = post.comments.filter(approved=True).order_by("-created_on")
         liked = False
@@ -125,7 +126,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     """
     model = Post
     template_name = "post_form.html"
-    fields = ['title', 'content', 'featured_image', 'excerpt']
+    form_class = PostForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -148,7 +149,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     model = Post
     template_name = "post_form.html"
-    fields = ['title', 'content', 'featured_image', 'excerpt']
+    form_class = PostForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
