@@ -148,6 +148,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     model = Post
     template_name = "post_form.html"
+    form_class = PostForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user

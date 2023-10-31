@@ -16,11 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from blog.views import (
-    PostListView,
-    PostDetailView,
-    PostCreateView,
-    PostUpdateView,
-    PostDeleteView,
     subscribe_newsletter,
     ProfileView,
     delete_account
@@ -34,12 +29,6 @@ urlpatterns = [
          name='subscribe_newsletter'),
     path('profile/', ProfileView, name='profile'),
     path('delete_account/', delete_account, name='delete_account'),
-    path('posts/', PostListView.as_view(), name='post_list'),
-    path('<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path("accounts/", include("allauth.urls")),
-    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
-    path('post/new/', PostCreateView.as_view(), name='post_new'),
-    path('<slug:slug>/update/', PostUpdateView.as_view(), name='post_update'),
-    path('<slug:slug>/delete/', PostDeleteView.as_view(), name='post_delete'),
-    path('', PostListView.as_view(), name='home'),
+    path('', include('blog.urls')),
 ]
