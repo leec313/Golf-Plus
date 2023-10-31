@@ -2,36 +2,21 @@ from .models import Post, Comment, NewsletterSubscription, Profile
 from django.contrib.auth.models import User
 from django.forms import ImageField, FileInput
 from django import forms
-from django_summernote.widgets import SummernoteWidget
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'featured_image', 'excerpt']
-        widgets = {
-            'content': SummernoteWidget(),
-        }
-
-
-class PostUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ['title', 'content', 'featured_image', 'excerpt']
-        widgets = {
-            'content': SummernoteWidget(),
-        }
 
 
 class CommentForm(forms.ModelForm):
-    body = forms.CharField(widget=SummernoteWidget())
+    body = forms.CharField(widget=forms.Textarea(
+            attrs={'placeholder': 'Your comment here'}))
 
     class Meta:
         model = Comment
         fields = ('body',)
-        widgets = {
-            'body': forms.Textarea(attrs={'placeholder': 'Your comment here'}),
-        }
 
 
 class NewsletterSubscriptionForm(forms.ModelForm):
