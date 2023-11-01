@@ -1,13 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-
-<div class="hero-container">
-    <img class="hero-image" src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698685630/xflcvt9agv2lsnpi88fr.jpg"
-        alt="Hero Image">
-    <div class="hero-text">
-        <h2>The Go-To Golf Blog</h2>
-    </div>
-</div>
 <div class="container-fluid">
     <div class="row">
         <!-- Blog Entries Column -->
@@ -19,6 +11,16 @@
                 {% elif request.GET.search %}
                 <h2 class="text-center mt-3">Search results for: "{{ request.GET.search }}"</h2>
                 {% else %}
+                <div class="hero-container">
+                    <img class="hero-image"
+                        src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698685630/xflcvt9agv2lsnpi88fr.jpg"
+                        alt="Hero Image">
+                    <a href="{% url 'about' %}">
+                        <div class="hero-text">
+                            <h2>The Go-To Golf Blog</h2>
+                        </div>
+                    </a>
+                </div>
                 <h2 class="text-center mt-3">Latest Blog Posts</h2>
                 {% endif %}
                 {% for post in posts %}
