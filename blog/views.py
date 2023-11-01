@@ -267,3 +267,7 @@ def delete_account(request):
         return redirect('home')
 
     return render(request, 'delete_account.html')
+
+
+def about(request):
+    return render(request, 'about.html')

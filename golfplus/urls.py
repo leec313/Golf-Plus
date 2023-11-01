@@ -18,7 +18,8 @@ from django.urls import path, include
 from blog.views import (
     subscribe_newsletter,
     ProfileView,
-    delete_account
+    delete_account,
+    about
 )
 from blog import views
 
@@ -30,5 +31,6 @@ urlpatterns = [
     path('profile/', ProfileView, name='profile'),
     path('delete_account/', delete_account, name='delete_account'),
     path("accounts/", include("allauth.urls")),
+    path("about/", about, name='about'),
     path('', include('blog.urls')),
 ]
