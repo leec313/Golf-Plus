@@ -88,5 +88,5 @@ class ContactModel(models.Model):
 
     # Naming within the admin
     class Meta:
-        verbose_name = "Contact" 
-        verbose_name_plural = "Contacts" 
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
