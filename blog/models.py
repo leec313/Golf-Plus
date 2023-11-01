@@ -76,3 +76,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+class ContactModel(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+    # Naming within the admin
+    class Meta:
+        verbose_name = "Contact" 
+        verbose_name_plural = "Contacts" 

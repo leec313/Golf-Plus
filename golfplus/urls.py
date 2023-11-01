@@ -19,7 +19,8 @@ from blog.views import (
     subscribe_newsletter,
     ProfileView,
     delete_account,
-    about
+    about,
+    ContactView
 )
 from blog import views
 
@@ -32,5 +33,6 @@ urlpatterns = [
     path('delete_account/', delete_account, name='delete_account'),
     path("accounts/", include("allauth.urls")),
     path("about/", about, name='about'),
+    path("contact/", ContactView, name='contact'),
     path('', include('blog.urls')),
 ]

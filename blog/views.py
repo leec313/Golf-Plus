@@ -17,7 +17,8 @@ from .forms import (
     NewsletterSubscriptionForm,
     ProfileUpdateForm,
     ImageUpdateForm,
-    PostForm
+    PostForm,
+    ContactForm
 )
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -271,3 +272,17 @@ def delete_account(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def ContactView(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,
+                             "Thanks for reaching out! We'll be in touch")
+            return redirect('home')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})

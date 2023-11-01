@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Post, Comment, NewsletterSubscription, Profile
+from .models import (
+    Post,
+    Comment,
+    NewsletterSubscription,
+    Profile,
+    ContactModel
+)
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -35,3 +41,9 @@ class NewsletterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Profile)
+
+
+@admin.register(ContactModel)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email')
+    search_fields = ('name', 'email')

@@ -1,7 +1,15 @@
-from .models import Post, Comment, NewsletterSubscription, Profile
+from .models import (
+    Post,
+    Comment,
+    NewsletterSubscription,
+    Profile,
+    ContactModel
+)
 from django.contrib.auth.models import User
 from django.forms import ImageField, FileInput
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit
 
 
 class PostForm(forms.ModelForm):
@@ -46,3 +54,12 @@ class ImageUpdateForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ImageUpdateForm, self).__init__(*args, **kwargs)
         self.fields['image'].label = 'Profile Picture'
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactModel
+        fields = ['name', 'email', 'message']
+
+    def __init__(self, *args, **kwargs):
+        super(ContactForm, self).__init__(*args, **kwargs)
