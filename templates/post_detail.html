@@ -91,10 +91,22 @@
                         {{ comment.name }}
                         <img class="comment-image" src="{{ comment.user.profile.image.url }}"
                             alt="{{ comment.user.username }}">
+                        {% if comment.user == user %}
+                        <a class="btn-update" href="{% url 'update_comment' pk=comment.pk %}">Update
+                        </a>
+                        <a class="btn-delete" href="{% url 'delete_comment' pk=comment.pk %}">Delete
+                        </a>
+                        {% endif %}
                         {% else %}
                         <div class="text-white">
                             {{ comment.created_on }}
                         </div>
+                        {% if comment.user == user %}
+                        <a class="btn-update" href="{% url 'update_comment' pk=comment.pk %}">Update
+                        </a>
+                        <a class="btn-delete" href="{% url 'delete_comment' pk=comment.pk %}">Delete
+                        </a>
+                        {% endif %}
                         <img class="comment-image" src="{{ comment.user.profile.image.url }}"
                             alt="{{ comment.user.username }}">
                         {{ comment.name }}

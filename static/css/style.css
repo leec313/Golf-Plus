@@ -386,6 +386,33 @@ input {
     object-fit: cover;
 }
 
+.btn-update {
+    background-color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    color: #2f4550;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.btn-update:hover {
+    background-color: #b8dbd9;
+    color: #445261;
+}
+
+.btn-delete {
+    background-color: #8c2f39;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btn-delete:hover {
+    background-color: #E84610;
+    color: #2f4550;
+}
+
 @media screen and (max-width: 480px) {
 
     .hero-text h2 {

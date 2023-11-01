@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
@@ -191,6 +192,30 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "Your post has been deleted.")
         return super().delete(request, *args, **kwargs)
+
+
+class CommentUpdateView(UpdateView):
+    """
+    View for deleting a single comment
+    """
+    model = Comment
+    template_name = "comment_update.html"
+    fields = ['body']
+
+    def get_success_url(self):
+        messages.success(self.request, "Your comment has been updated.")
+        return reverse_lazy('post_detail', kwargs={
+            'slug': self.object.post.slug})
+
+
+class CommentDeleteView(DeleteView):
+    model = Comment
+    template_name = "comment_delete.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "Your comment has been deleted.")
+        return reverse_lazy('post_detail', kwargs={
+            'slug': self.object.post.slug})
 
 
 class PostLike(View):
