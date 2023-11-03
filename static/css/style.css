@@ -139,6 +139,7 @@ body {
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
+    text-transform: uppercase;
 }
 
 .post-subtitle {
@@ -172,6 +173,7 @@ body {
     color: #8c2f39;
     border: none;
     background: transparent;
+    padding: 0;
 }
 
 .btn-like:hover,
@@ -327,6 +329,10 @@ input {
 .likes-comments-container {
     display: flex;
     gap: 10px;
+}
+
+.like-comments-detail {
+    margin-right: 15px;
 }
 
 .comment-image {
