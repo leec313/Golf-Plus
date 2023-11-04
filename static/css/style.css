@@ -6,10 +6,22 @@ body {
     position: relative;
 }
 
-.hero-image {
+.hero-carousel {
+    display: flex;
     width: 100%;
-    max-height: 550px;
+    overflow: hidden;
+}
+
+.hero-carousel img {
+    flex: 0 0 auto;
+    width: 100%;
+    max-height: 400px;
     object-fit: cover;
+    opacity: 1;
+}
+
+.hero-carousel img:not(.active) {
+    opacity: 0;
 }
 
 .hero-text {
@@ -25,6 +37,7 @@ body {
 .hero-text:hover {
     background-color: #2f4550;
 }
+
 
 .brand {
     width: 150px;

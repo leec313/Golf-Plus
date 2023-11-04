@@ -44,3 +44,35 @@ setTimeout(function () {
     let alert = new bootstrap.Alert(messages);
     alert.close();
 }, 2500);
+
+
+// For index.html .hero-carousel slideshow
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector('.hero-carousel');
+    const slides = carousel.querySelectorAll('img');
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+                slide.style.display = 'block'; // Show the active image
+            } else {
+                slide.classList.remove('active');
+                slide.style.display = 'none'; // Hide non-active images
+            }
+        });
+    }
+
+    // Show the first image initially
+    showImage(currentIndex);
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showImage(currentIndex);
+    }
+
+    // Change slide every 3 seconds
+    setInterval(nextSlide, 5000);
+});
