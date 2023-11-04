@@ -79,7 +79,6 @@ body {
 .author {
     color: white;
     margin: 4px;
-    text-transform: uppercase;
     font-size: 14px;
 }
 
@@ -126,15 +125,25 @@ body {
     text-align: center;
 }
 
-.profile-post-button:hover {
-    background-color: #586f7c;
+.profile-post-button {
     color: #fff;
+    background-color: #2f4550;
+}
+
+.profile-post-button:hover {
+    background-color: #b8dbd9;
+    color: #2f4550;
 }
 
 .post-link:hover,
-.page-link {
-    color: #b8dbd9;
+.page-link:hover {
+    color: #586f7c;
 }
+
+.page-link {
+    color: #2f4550;
+}
+
 
 .post-title {
     margin-top: 20%;
@@ -296,7 +305,7 @@ input {
 }
 
 .profile-submit {
-    margin-top: 15px;
+    margin-top: 5px;
     background-color: #586f7c;
     border: none;
 }

@@ -117,6 +117,9 @@ class PostDetailView(DetailView):
         # Add the comment form to the context
         context['comment_form'] = comment_form
         context['commented'] = True
+        
+        # Add a message to inform the user
+        messages.success(self.request, "Comment posted!")
 
         return render(request, "post_detail.html", context)
 

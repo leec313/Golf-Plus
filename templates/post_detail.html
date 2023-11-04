@@ -120,11 +120,6 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- When a user submits a comment, they will see an alert box for confirmation -->
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Comment posted!
-                </div>
-                {% else %}
                 {% if user.is_authenticated %}
                 <h3>Leave a comment:</h3>
                 <p>Posting as: {{ user.username }}</p>
@@ -133,7 +128,6 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
-                {% endif %}
                 {% endif %}
             </div>
         </div>
