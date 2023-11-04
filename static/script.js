@@ -26,7 +26,7 @@ window.onclick = function (event) {
     }
 };
 
-// Function to get a cookie value by name so the newsletter modal only shows up once for a user
+// This is the function that get's the user's cookie info
 function getCookie(name) {
     var cookieArr = document.cookie.split(';');
     for (var i = 0; i < cookieArr.length; i++) {

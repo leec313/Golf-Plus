@@ -29,7 +29,7 @@
                 <h2 class="text-center mt-3">Latest Blog Posts</h2>
                 {% endif %}
                 {% for post in posts %}
-                <div class="col-md-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="card mb-4">
                         <a href="{% url 'post_detail' post.slug  %}">
                             <div class="card-body">
