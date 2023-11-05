@@ -27,47 +27,44 @@
                     </a>
                 </div>
                 <h2 class="text-center mt-3">Latest Blog Posts</h2>
-                {% endif %}
-                {% for post in posts %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4">
-                        <a href="{% url 'post_detail' post.slug  %}">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top"
-                                        src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
-                                    {% else %}
-                                    <img class="card-img-top" src=" {{ post.featured_image.url }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ post.author }}</p>
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-4">
+                            <a href="{% url 'post_detail' post.slug  %}">
+                                <div class="card-body">
+                                    <div class="image-container">
+                                        {% if "placeholder" in post.featured_image.url %}
+                                        <img class="card-img-top"
+                                            src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
+                                        {% else %}
+                                        <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                        {% endif %}
+                                        <div class="image-flash">
+                                            <p class="author">Author: {{ post.author }}</p>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'post_detail' post.slug  %}" class="post-link">
+                                        <h2 class="card-title text-uppercase">{{ post.title }}</h2>
+                                        <p class="card-text">
+                                            {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
+                                        </p>
+                                    </a>
+                                    <hr />
+                                    <div class="card-text text-muted h6">
+                                        <span class="date-created">{{ post.created_on}}</span>
+                                        <span class="likes-comments-container">
+                                            <i class="far fa-heart"></i> {{ post.number_of_likes }}
+                                            <i class="far fa-comments"></i> {{ post.comments.count }}
+                                        </span>
                                     </div>
                                 </div>
-                                <a href="{% url 'post_detail' post.slug  %}" class="post-link">
-                                    <h2 class="card-title text-uppercase">{{ post.title }}</h2>
-                                    <p class="card-text">
-                                        <!-- If the excerpt exceeds 100 characters, it cuts it off -->
-                                        {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
-                                    </p>
-                                </a>
-                                <hr />
-                                <div class="card-text text-muted h6">
-                                    <span class="date-created">{{ post.created_on}}</span>
-                                    <span class="likes-comments-container">
-                                        <i class="far fa-heart"></i> {{ post.number_of_likes }}
-                                        <i class="far fa-comments"></i> {{ post.comments.count }}
-                                    </span>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
                 {% endif %}
-                {% endfor %}
             </div>
         </div>
     </div>
