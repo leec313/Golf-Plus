@@ -126,6 +126,7 @@ WSGI_APPLICATION = 'golfplus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# USE THIS DATABASES CODE WHEN PERFORMING TESTS.PY
 #DATABASES = {
  #   'default': {
   #     'ENGINE': 'django.db.backends.sqlite3',
@@ -133,12 +134,10 @@ WSGI_APPLICATION = 'golfplus.wsgi.application'
     #}
 #}
 
+#USE THIS DATABASES FOR PRODUCTION
 DATABASES = {
    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-
-
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

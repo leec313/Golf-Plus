@@ -8,17 +8,21 @@ from .models import (
 from django.contrib.auth.models import User
 from django.forms import ImageField, FileInput
 from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit
 
 
 class PostForm(forms.ModelForm):
+    """
+    Form class for creating a blog post
+    """
     class Meta:
         model = Post
         fields = ['title', 'content', 'featured_image', 'excerpt']
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Form class for posting a comment
+    """
     body = forms.CharField(widget=forms.Textarea(
             attrs={'placeholder': 'Your comment here'}))
 
@@ -28,6 +32,9 @@ class CommentForm(forms.ModelForm):
 
 
 class NewsletterSubscriptionForm(forms.ModelForm):
+    """
+    Newsletter form class
+    """
     class Meta:
         model = NewsletterSubscription
         fields = ['email']
@@ -39,12 +46,18 @@ class NewsletterSubscriptionForm(forms.ModelForm):
 
 
 class ProfileUpdateForm(forms.ModelForm):
+    """
+    Form class so users can update their profile info
+    """
     class Meta:
         model = User
         fields = ['username', 'email']
 
 
 class ImageUpdateForm(forms.ModelForm):
+    """
+    Form class so users can update their profile picture
+    """
     image = ImageField(widget=FileInput)
 
     class Meta:
@@ -57,6 +70,9 @@ class ImageUpdateForm(forms.ModelForm):
 
 
 class ContactForm(forms.ModelForm):
+    """
+    Contact page form class
+    """
     class Meta:
         model = ContactModel
         fields = ['name', 'email', 'message']

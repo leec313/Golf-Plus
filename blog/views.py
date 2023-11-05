@@ -46,6 +46,9 @@ class PostListView(ListView):
         return context
 
     def get_queryset(self):
+        """
+        Search function for base.html
+        """
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search', None)
 
@@ -199,7 +202,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class CommentUpdateView(UpdateView):
     """
-    View for deleting a single comment
+    View for updating a single comment
     """
     model = Comment
     template_name = "comment_update.html"
@@ -212,6 +215,9 @@ class CommentUpdateView(UpdateView):
 
 
 class CommentDeleteView(DeleteView):
+    """
+    View for deleting a single comment
+    """
     model = Comment
     template_name = "comment_delete.html"
 
@@ -259,11 +265,14 @@ def subscribe_newsletter(request):
 
 
 def ProfileView(request):
+    """
+    View for a user's profile
+    """
     user_form = ProfileUpdateForm(instance=request.user)
     image_form = ImageUpdateForm(instance=request.user.profile)
     user_posts = Post.objects.filter(author=request.user)
 
-    # Pagination
+    # Pagination for user's posts
     page = request.GET.get('page', 1)
     paginator = Paginator(user_posts, 6)  # Show 3 posts per page
     try:
@@ -273,6 +282,7 @@ def ProfileView(request):
     except EmptyPage:
         user_posts = paginator.page(paginator.num_pages)
 
+    # Updating the user profile
     if request.method == 'POST':
         user_form = ProfileUpdateForm(request.POST, instance=request.user)
         image_form = ImageUpdateForm(
@@ -290,6 +300,9 @@ def ProfileView(request):
 
 @login_required
 def delete_account(request):
+    """
+    Delete account function
+    """
     if request.method == 'POST':
         # Delete the user and redirect to the home page
         request.user.delete()
@@ -299,10 +312,16 @@ def delete_account(request):
 
 
 def about(request):
+    """
+    View for about page
+    """
     return render(request, 'about.html')
 
 
 def ContactView(request):
+    """
+    View for contact page
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():

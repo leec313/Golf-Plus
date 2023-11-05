@@ -1,4 +1,4 @@
-
+# URLS.PY for all blog related views
 from django.urls import path, include
 from .views import (
     PostListView,

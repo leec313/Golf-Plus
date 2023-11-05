@@ -9,6 +9,9 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
+    """
+    Defines blog post model
+    """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -34,7 +37,9 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-
+    """
+    Defines comment model
+    """
     post = models.ForeignKey(Post,
                              on_delete=models.CASCADE,
                              related_name="comments")
@@ -53,11 +58,17 @@ class Comment(models.Model):
 
 
 class NewsletterSubscription(models.Model):
+    """
+    Defines Newsletter subscription model
+    """
     email = models.EmailField(unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
 
 class Profile(models.Model):
+    """
+    Defines profile model
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = CloudinaryField('image', default='https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698444280/b868mv6vciq3m4fixf3i.png')  # noqa
 
@@ -65,20 +76,23 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 
-# Signal to create a profile for a new user
+# Signal to create a profile when a user registers a new account
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
 
-# Signal to save the profile when the user is saved
+# Signal to save the profile when the user account is created
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 
 class ContactModel(models.Model):
+    """
+    Defines contact page model
+    """
     name = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()
