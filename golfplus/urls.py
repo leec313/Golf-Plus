@@ -6,7 +6,8 @@ from blog.views import (
     ProfileView,
     delete_account,
     about,
-    ContactView
+    ContactView,
+    custom_404
 )
 from blog import views
 
@@ -22,3 +23,5 @@ urlpatterns = [
     path("contact/", ContactView, name='contact'),
     path('', include('blog.urls')),
 ]
+
+handler404 = custom_404
