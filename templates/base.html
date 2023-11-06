@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html class="h-100" lang="en">
 
 <head>
     <title>Golf Plus</title>
@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand d-lg-none" href="{% url 'home' %}">
+            <a class="navbar-brand d-lg-none" href="{% url 'home' %}" aria-label="Home">
                 <span>
                     <img class="brand"
                         src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698684645/n0ifjhpoaalrleqoqkvi.png"
@@ -47,27 +47,28 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'about' %}">About</a>
+                                <a class="nav-link" href="{% url 'about' %}" aria-label="About">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                                <a class="nav-link" href="{% url 'contact' %}" aria-label="Contact">Contact</a>
                             </li>
                             {% if user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'post_new' %}">Create Post</a>
+                                <a class="nav-link" href="{% url 'post_new' %}" aria-label="Create Post">Create
+                                    Post</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                <a class="nav-link" href="{% url 'profile' %}" aria-label="Profile">Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                <a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout">Logout</a>
                             </li>
                             {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                                <a class="nav-link" href="{% url 'account_signup' %}" aria-label="Register">Register</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                                <a class="nav-link" href="{% url 'account_login' %}" aria-label="Login">Login</a>
                             </li>
                             {% endif %}
                         </ul>
@@ -75,7 +76,7 @@
                     <div class="d-flex align-items-center justify-content-center flex-grow-1">
                         <!-- Centered Brand -->
                         <div class="d-none d-lg-block mx-auto order-lg-2">
-                            <a class="navbar-brand" href="{% url 'home' %}">
+                            <a class="navbar-brand" href="{% url 'home' %}" aria-label="Home">
                                 <span>
                                     <img class="brand"
                                         src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698684645/n0ifjhpoaalrleqoqkvi.png"
@@ -119,14 +120,15 @@
     <footer class="footer mt-auto py-3">
         <p class="m-0 text-center text-white">Lee Curtis | Golf Plus | 2023 &copy;</p>
         <p class="m-0 text-center text-white">Follow us:
-            <a href="https://www.facebook.com" target="_blank"><i
+            <a href="https://www.facebook.com" target="_blank" aria-label="Link to our Facebook"><i
                     class="fab fa-facebook-square ms-3 text-white"></i></a>
-            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter-square ms-3 text-white"></i></a>
-            <a href="https://www.instagram.com" target="_blank"><i
+            <a href="https://www.twitter.com" target="_blank" aria-label="Link to our Twitter"><i
+                    class="fab fa-twitter-square ms-3 text-white"></i></a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Link to our Instagram"><i
                     class="fab fa-instagram-square ms-3 text-white"></i></a>
-            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube-square ms-3 text-white"></i></a>
+            <a href="https://www.youtube.com" target="_blank" aria-label="Link to our YouTube"><i
+                    class="fab fa-youtube-square ms-3 text-white"></i></a>
     </footer>
 </body>
-
 
 </html>
