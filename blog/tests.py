@@ -205,3 +205,14 @@ class BlogTests(TestCase):
 
         # Redirect to the same URL to avoid issues with refreshing
         self.assertRedirects(response, reverse('post_detail', kwargs={'slug': self.post.slug}))
+
+    
+    def test_404_page(self):
+        # Simulate a GET request to a non-existent URL
+        response = self.client.get('non_existent_url')
+
+        # Check if the response status code is 404
+        self.assertEqual(response.status_code, 404)
+
+        # Check if the 404 template is used
+        self.assertTemplateUsed(response, '404.html')

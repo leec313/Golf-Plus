@@ -7,7 +7,10 @@ from blog.views import (
     delete_account,
     about,
     ContactView,
-    custom_404
+    custom_404,
+    custom_403,
+    custom_400,
+    custom_500
 )
 from blog import views
 
@@ -24,4 +27,8 @@ urlpatterns = [
     path('', include('blog.urls')),
 ]
 
+# Handlers for custom error pages
 handler404 = custom_404
+handler403 = custom_403
+handler400 = custom_400
+handler500 = custom_500
