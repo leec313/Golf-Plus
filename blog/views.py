@@ -21,7 +21,7 @@ from .forms import (
     PostForm,
     ContactForm
 )
-from django.db.models import Q
+from django.db.models import Q, Case, When
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
@@ -47,13 +47,13 @@ class PostListView(ListView):
 
     def get_queryset(self):
         """
-        Search function for base.html
+        Search function for posts
         """
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search', None)
 
+         # Use Q objects to combine filters with OR logic
         if search_query:
-            # Use Q objects to combine filters with OR logic
             queryset = queryset.filter(
                 Q(title__icontains=search_query) |
                 Q(author__username__icontains=search_query) |
@@ -61,12 +61,25 @@ class PostListView(ListView):
                 Q(excerpt__icontains=search_query)
             )
 
+            # Prioritize matches in the title by using order_by
+            queryset = queryset.order_by(
+                Case(
+                    When(title__icontains=search_query, then=0),
+                    When(title__icontains=search_query, then=1),
+                    default=2
+                ),
+                "-created_on" # Additional ordering by created_on
+            )
+
         return queryset
 
+    
     def render_to_response(self, context, **response_kwargs):
-        # Check if no posts are found based on the search query
+        """
+        If no posts found, return 'no_results'
+        """
         if not context['posts']:
-            context['no_results'] = True  # Add a flag to indicate no results
+            context['no_results'] = True
 
         return super().render_to_response(context, **response_kwargs)
 
