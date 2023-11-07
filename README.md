@@ -213,7 +213,7 @@ How Golf Plus Fulfills These Needs:
 - As a user, I expect to be able to search for posts, authors and content I might find interesting.
 - As a user, I expect to be able to sign up for a newsletter to keep up to date on anything new.
 - As a user, I expect to be able to unsubscribe to the newsletter from my profile.
-- As a user with an account, I expect to be able to create posts. 
+- As a user with an account, I expect to be able to create posts.
 - As a user with an account, I expect to be able to like/unlike posts.
 - As a user with an account, I expect to be able to comment on posts. 
 - As a user with an account, I expect to be able to delete my comments on posts.
@@ -222,5 +222,7 @@ How Golf Plus Fulfills These Needs:
 - As a user with an account, I expect to be able to update any posts I create.
 - As a user with an account, I expect to be able to delete my account.
 - As a user with an account, I expect to be able to update my account.
+- As a user with an account, I expect to be able to see my posts within the profile page.
 
-
+## Visual Design
+### Wireframes
