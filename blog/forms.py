@@ -54,6 +54,20 @@ class ProfileUpdateForm(forms.ModelForm):
         fields = ['username', 'email']
 
 
+class ProfileNewsletterUpdate(forms.ModelForm):
+    """
+    Form class for updating the newsletter subscription on the profile
+    """
+    subscribe_newsletter = forms.BooleanField(
+        label='Subscribe to Newsletter',
+        required=False,
+    )
+
+    class Meta:
+        model = NewsletterSubscription
+        fields = ['subscribe_newsletter']
+
+
 class ImageUpdateForm(forms.ModelForm):
     """
     Form class so users can update their profile picture

@@ -19,7 +19,8 @@ from .forms import (
     ProfileUpdateForm,
     ImageUpdateForm,
     PostForm,
-    ContactForm
+    ContactForm,
+    ProfileNewsletterUpdate
 )
 from django.db.models import Q, Case, When
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -278,16 +279,13 @@ def subscribe_newsletter(request):
 
 
 def ProfileView(request):
-    """
-    View for a user's profile
-    """
     user_form = ProfileUpdateForm(instance=request.user)
     image_form = ImageUpdateForm(instance=request.user.profile)
     user_posts = Post.objects.filter(author=request.user)
 
     # Pagination for user's posts
     page = request.GET.get('page', 1)
-    paginator = Paginator(user_posts, 6)  # Show 3 posts per page
+    paginator = Paginator(user_posts, 6)  # Show 6 posts per page
     try:
         user_posts = paginator.page(page)
     except PageNotAnInteger:
@@ -295,20 +293,41 @@ def ProfileView(request):
     except EmptyPage:
         user_posts = paginator.page(paginator.num_pages)
 
-    # Updating the user profile
+    # Newsletter subscription form
+    user_email = request.user.email
+    initial_subscription = NewsletterSubscription.objects.filter(email=user_email).exists()
+    newsletter_form = ProfileNewsletterUpdate(instance=request.user.profile, initial={'subscribe_newsletter': initial_subscription})
+
+    # Updating the user profile and newsletter subscription
     if request.method == 'POST':
         user_form = ProfileUpdateForm(request.POST, instance=request.user)
-        image_form = ImageUpdateForm(
-             request.POST, request.FILES, instance=request.user.profile)
+        image_form = ImageUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        newsletter_form = ProfileNewsletterUpdate(request.POST, instance=request.user.profile)
 
-        if user_form.is_valid() and image_form.is_valid():
+        if user_form.is_valid() and image_form.is_valid() and newsletter_form.is_valid():
             user_form.save()
             image_form.save()
+
+            # Check if the checkbox is selected
+            subscribe_newsletter = newsletter_form.cleaned_data.get('subscribe_newsletter')
+
+            if subscribe_newsletter and not initial_subscription:
+                # User selected the checkbox and was not previously subscribed
+                NewsletterSubscription.objects.create(email=user_email)
+                messages.success(request, 'You are now subscribed to the newsletter.')
+            elif not subscribe_newsletter and initial_subscription:
+                # User unselected the checkbox and was previously subscribed
+                NewsletterSubscription.objects.filter(email=user_email).delete()
+                messages.success(request, 'You are unsubscribed from the newsletter.')
+
             return redirect('profile')
 
-    return render(request, 'profile.html',
-                  {'user_form': user_form,
-                   'image_form': image_form, 'user_posts': user_posts})
+    return render(request, 'profile.html', {
+        'user_form': user_form,
+        'image_form': image_form,
+        'user_posts': user_posts,
+        'newsletter_form': newsletter_form,
+    })
 
 
 @login_required

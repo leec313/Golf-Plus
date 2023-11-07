@@ -9,10 +9,10 @@ from blog.models import Post
 
 def liked_status(request):
     """
-    Used to to include the liked status for the current user in every context
+    Used to include the liked status for the current user in every context
     """
     liked = False
-    if request.user.is_authenticated:
-        liked = Post.objects.filter(slug=request.resolver_match.kwargs.get(
-            'slug'), likes=request.user).exists()
+    if hasattr(request, 'user') and request.user.is_authenticated:
+        liked = Post.objects.filter(slug=request.resolver_match.kwargs.get('slug'), likes=request.user).exists()
     return {'liked': liked}
+    
