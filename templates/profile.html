@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags static %}
 {% block content %}
-<div class="content-section text-center max-w-50">
+<section class="content-section text-center max-w-50">
     <div class="mt-3">
         <!--This if/else statement checks if the user has uploaded their own profile image-->
         <!-- If they didn't it will display the placeholder, if they did, it will display the uploaded image -->
@@ -28,65 +28,72 @@
 
             <button type="submit" class="btn btn-primary btn-block profile-submit">Update Profile</button>
         </form>
-        <button class="btn btn-danger btn-block mt-1" href="{% url 'delete_account' %}">Delete Account</button>
+        <a class="btn btn-danger btn-block mt-1" href="{% url 'delete_account' %}">Delete Account</a>
     </div>
-</div>
+</section>
 <!-- If the user has made posts, it will display them on the profile page-->
 {% if user_posts %}
-<div class="container-fluid">
+<section class="container-fluid">
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 <h2 class="text-center">Your Posts</h2>
-                <hr />
+                <hr>
                 <!-- For loop to show the user's posts -->
                 {% for post in user_posts %}
-                <div class="col-md-4">
+                <article class="col-lg-4">
                     <div class="card mb-4">
-                        <a href="{% url 'post_detail' post.slug %}">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <!-- Again, if there is no image uploaded on a post, it will display the placeholder image-->
-                                    {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top"
+                        <div class="card-body">
+                            <div class="image-container">
+                                <!-- If there is no image included in the user's blog post, display placeholder -->
+                                {% if "placeholder" in post.featured_image.url %}
+                                <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}"><img
+                                        class="card-img-top" alt=" {{ post.title }} "
                                         src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
-                                    {% else %}
-                                    <!-- Else it will display the uploaded image -->
-                                    <img class="card-img-top" src="{{ post.featured_image.url }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ post.author }}</p>
-                                    </div>
-                                </div>
-                                <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                    <h2 class="card-title">{{ post.title }}</h2>
-                                    <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
-                                <p class="card-text text-muted h6">
-                                    <!-- If the post has been approved/published, it will show all the details listed below-->
-                                    {% if post.status == 1 %}
-                                    <hr />
-                                    <div class="card-text text-muted h6">
-                                        <span class="date-created">{{ post.created_on}}</span>
-                                        <span class="likes-comments-container">
-                                            <i class="far fa-heart"></i>
-                                            {{ post.number_of_likes }}
-                                            <i class="far fa-comments"></i>
-                                            {{ post.comments.count }}
-                                        </span>
-                                    </div>
-                                    <!-- Else it will not show the above details (comments/likes/date) and show a Pending badge -->
-                                    {% else %}
-                                    <div class="image-flash draft-status">
-                                        <p>Pending Approval</p>
-                                    </div>
-                                    {% endif %}
-                                </p>
+                                <!-- Else displays the uploaded image -->
+                                {% else %}
+                                <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}">
+                                    <img class="card-img-top" alt="{{ post.title }}"
+                                        src=" {{ post.featured_image.url }}">
+                                </a>
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.author }}</p>
+                                </div>
                             </div>
-                        </a>
+                            <a href="{% url 'post_detail' post.slug  %}" class="post-link"
+                                aria-label="{{ post.title }}">
+                                <h2 class="card-title text-uppercase">{{ post.title }}</h2>
+                            </a>
+                            <p class="card-text">
+                                <!-- If the excerpt exceeds 100 characters, it cuts it off -->
+                                {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
+                            </p>
+                            <div class="card-text text-muted h6">
+                                <!-- If the post has been approved/published, it will show all the details listed below-->
+                                {% if post.status == 1 %}
+                                <hr>
+                                <div class="card-text text-muted h6">
+                                    <span class="date-created">{{ post.created_on}}</span>
+                                    <span class="likes-comments-container">
+                                        <i class="far fa-heart"></i>
+                                        {{ post.number_of_likes }}
+                                        <i class="far fa-comments"></i>
+                                        {{ post.comments.count }}
+                                    </span>
+                                </div>
+                                <!-- Else it will not show the above details (comments/likes/date) and show a Pending badge -->
+                                {% else %}
+                                <div class="image-flash draft-status">
+                                    <p>Pending Approval</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </article>
                 <!-- checking if the current iteration is a multiple of 3, and if it is, it closes the current row <div class="row"> and opens a new one -->
                 {% if forloop.counter|divisibleby:3 %}
             </div>
@@ -113,14 +120,14 @@
         </ul>
     </nav>
     {% endif %}
-</div>
+</section>
 <!-- If the user has no posts made yet, it will display a link to the create a post page -->
 {% else %}
 <hr>
-<div class="profile-post">
+<span class="profile-post">
     <a class="btn profile-post-button mb-3" href="{% url 'post_new' %}">
-        <h3>Click here to create your first post!</h3>
+        Click here to create your first post!
     </a>
-</div>
+</span>
 {% endif %}
 {% endblock content %}

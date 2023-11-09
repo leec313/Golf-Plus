@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container-fluid">
+<section class="container-fluid">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
+        <section class="col-12 mt-3 left">
             <div class="row">
                 <!-- Checking if a post the user searched for was found - if not return "no posts found"-->
                 {% if no_results %}
@@ -32,44 +32,46 @@
                 {% endif %}
                 <!-- For loop that displays each blog post on the page in it's own container -->
                 {% for post in posts %}
-                <div class="col-lg-4">
+                <article class="col-lg-4">
                     <div class="card mb-4">
-                        <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}">
-                            <div class="card-body">
-                                <div class="image-container">
-                                    <!-- If there is no image included in the user's blog post, display placeholder -->
-                                    {% if "placeholder" in post.featured_image.url %}
-                                    <img class="card-img-top" alt=" {{ post.title }} "
+                        <div class="card-body">
+                            <div class="image-container">
+                                <!-- If there is no image included in the user's blog post, display placeholder -->
+                                {% if "placeholder" in post.featured_image.url %}
+                                <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}"><img
+                                        class="card-img-top" alt=" {{ post.title }} "
                                         src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
-                                    <!-- Else displays the uploaded image -->
-                                    {% else %}
-                                    <img class="card-img-top" alt=" {{ post.title }} "
-                                        src=" {{ post.featured_image.url }}">
-                                    {% endif %}
-                                    <div class="image-flash">
-                                        <p class="author">Author: {{ post.author }}</p>
-                                    </div>
-                                </div>
-                                <a href="{% url 'post_detail' post.slug  %}" class="post-link"
-                                    aria-label="{{ post.title }}">
-                                    <h2 class="card-title text-uppercase">{{ post.title }}</h2>
-                                    <p class="card-text">
-                                        <!-- If the excerpt exceeds 100 characters, it cuts it off -->
-                                        {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
-                                    </p>
                                 </a>
-                                <hr />
-                                <div class="card-text h6">
-                                    <span class="date-created">{{ post.created_on}}</span>
-                                    <span class="likes-comments-container">
-                                        <i class="far fa-heart"></i> {{ post.number_of_likes }}
-                                        <i class="far fa-comments"></i> {{ post.comments.count }}
-                                    </span>
+                                <!-- Else displays the uploaded image -->
+                                {% else %}
+                                <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}">
+                                    <img class="card-img-top" alt="{{ post.title }}"
+                                        src=" {{ post.featured_image.url }}">
+                                </a>
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                        </a>
+                            <a href="{% url 'post_detail' post.slug  %}" class="post-link"
+                                aria-label="{{ post.title }}">
+                                <h2 class="card-title text-uppercase">{{ post.title }}</h2>
+                            </a>
+                            <p class="card-text">
+                                <!-- If the excerpt exceeds 100 characters, it cuts it off -->
+                                {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
+                            </p>
+                            <hr>
+                            <div class="card-text h6">
+                                <span class="date-created">{{ post.created_on}}</span>
+                                <span class="likes-comments-container">
+                                    <i class="far fa-heart"></i> {{ post.number_of_likes }}
+                                    <i class="far fa-comments"></i> {{ post.comments.count }}
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </article>
                 <!-- checking if the current iteration is a multiple of 3, and if it is, it closes the current row <div class="row"> and opens a new one -->
                 {% if forloop.counter|divisibleby:3 %}
             </div>
@@ -77,7 +79,7 @@
                 {% endif %}
                 {% endfor %}
             </div>
-        </div>
+        </section>
     </div>
     <!-- Pagination: as per the PostList view, the page will display only 6 posts per page-->
     {% if is_paginated %}
@@ -103,5 +105,5 @@
     {% endif %}
     <!-- Includes the newsletter pop up for new users/sessions -->
     {% include 'subscribe_modal.html' %}
-</div>
+</section>
 {% endblock %}
