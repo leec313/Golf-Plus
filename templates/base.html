@@ -20,14 +20,13 @@
     <link rel="icon" type="image/png" href="{% static 'media/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/script.js' %}"></script>
-
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
+            <!-- Logo for element/styling for mobile-->
             <a class="navbar-brand d-lg-none" href="{% url 'home' %}" aria-label="Home">
                 <span>
                     <img class="brand"
@@ -74,7 +73,7 @@
                         </ul>
                     </div>
                     <div class="d-flex align-items-center justify-content-center flex-grow-1">
-                        <!-- Centered Brand -->
+                        <!-- Logo for element/styling for desktop (centered)-->
                         <div class="d-none d-lg-block mx-auto order-lg-2">
                             <a class="navbar-brand" href="{% url 'home' %}" aria-label="Home">
                                 <span>
@@ -85,6 +84,7 @@
                             </a>
                         </div>
                     </div>
+                    <!-- Search bar-->
                     <div class="d-flex align-items-center">
                         <form class="d-flex" method="get" action="{% url 'post_list' %}">
                             <input class="form-control me-2" type="text" name="search" placeholder="Find a post...">
@@ -95,7 +95,7 @@
             </div>
         </div>
     </nav>
-
+    <!-- Message alerts -->
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
@@ -108,14 +108,11 @@
             </div>
         </div>
     </div>
-
     <main class="flex-shrink-0 main-bg">
-
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3">
         <p class="m-0 text-center text-white">Lee Curtis | Golf Plus | 2023 &copy;</p>

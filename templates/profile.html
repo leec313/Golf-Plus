@@ -3,17 +3,21 @@
 {% block content %}
 <div class="content-section text-center max-w-50">
     <div class="mt-3">
+        <!--This if/else statement checks if the user has uploaded their own profile image-->
+        <!-- If they didn't it will display the placeholder, if they did, it will display the uploaded image -->
         {% if user.profile.image %}
         <img class="rounded-circle account-img-sm" src="{{ user.profile.image.url }}" alt="{{ user.username }}">
         {% else %}
         <img class="rounded-circle account-img-sm" src="{% static 'default-images/profile.png' %}"
             alt="{{ user.username }}">
         {% endif %}
+        <!-- Shows the username and email underneath the profile image -->
         <div class="media-body">
             <h2 class="account-heading">{{ user.username }}</h2>
             <p class="text-secondary">{{ user.email }}</p>
         </div>
     </div>
+    <!-- displays the profile forms including the user info, image and newsletter checkbox -->
     <div class="mx-auto my-4 profile-form">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -24,9 +28,10 @@
 
             <button type="submit" class="btn btn-primary btn-block profile-submit">Update Profile</button>
         </form>
-        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete_account' %}">Delete Account</a>
+        <button class="btn btn-danger btn-block mt-1" href="{% url 'delete_account' %}">Delete Account</button>
     </div>
 </div>
+<!-- If the user has made posts, it will display them on the profile page-->
 {% if user_posts %}
 <div class="container-fluid">
     <div class="row">
@@ -35,16 +40,19 @@
             <div class="row">
                 <h2 class="text-center">Your Posts</h2>
                 <hr />
+                <!-- For loop to show the user's posts -->
                 {% for post in user_posts %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <a href="{% url 'post_detail' post.slug %}">
                             <div class="card-body">
                                 <div class="image-container">
+                                    <!-- Again, if there is no image uploaded on a post, it will display the placeholder image-->
                                     {% if "placeholder" in post.featured_image.url %}
                                     <img class="card-img-top"
                                         src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
                                     {% else %}
+                                    <!-- Else it will display the uploaded image -->
                                     <img class="card-img-top" src="{{ post.featured_image.url }}">
                                     {% endif %}
                                     <div class="image-flash">
@@ -56,6 +64,7 @@
                                     <p class="card-text">{{ post.excerpt }}</p>
                                 </a>
                                 <p class="card-text text-muted h6">
+                                    <!-- If the post has been approved/published, it will show all the details listed below-->
                                     {% if post.status == 1 %}
                                     <hr />
                                     <div class="card-text text-muted h6">
@@ -67,6 +76,7 @@
                                             {{ post.comments.count }}
                                         </span>
                                     </div>
+                                    <!-- Else it will not show the above details (comments/likes/date) and show a Pending badge -->
                                     {% else %}
                                     <div class="image-flash draft-status">
                                         <p>Pending Approval</p>
@@ -77,6 +87,7 @@
                         </a>
                     </div>
                 </div>
+                <!-- checking if the current iteration is a multiple of 3, and if it is, it closes the current row <div class="row"> and opens a new one -->
                 {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
@@ -85,14 +96,17 @@
             </div>
         </div>
     </div>
+    <!-- Pagination: as per the PostList view, the page will display only 6 posts per page-->
     {% if user_posts.has_other_pages %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
+            <!-- If there is a previous page,  it will display the previous button-->
             {% if user_posts.has_previous %}
             <li><a href="?page={{ user_posts.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
             {% endif %}
             <li class="page-item disabled"><span class="page-link">Page {{ user_posts.number }} of
                     {{ user_posts.paginator.num_pages }}</span></li>
+            <!-- If there is a next page,  it will display the next button-->
             {% if user_posts.has_next %}
             <li><a href="?page={{ user_posts.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
             {% endif %}
@@ -100,6 +114,7 @@
     </nav>
     {% endif %}
 </div>
+<!-- If the user has no posts made yet, it will display a link to the create a post page -->
 {% else %}
 <hr>
 <div class="profile-post">
