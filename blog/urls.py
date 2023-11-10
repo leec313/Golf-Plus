@@ -8,13 +8,24 @@ from .views import (
     PostDeleteView,
     PostLike,
     CommentUpdateView,
-    CommentDeleteView
+    CommentDeleteView,
+    subscribe_newsletter,
+    ProfileView,
+    delete_account,
+    about,
+    ContactView
 )
 
 urlpatterns = [
     path('posts/', PostListView.as_view(), name='post_list'),
     path('post/new/', PostCreateView.as_view(), name='post_new'),
     path('post/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
+    path('subscribe_newsletter/', subscribe_newsletter,
+         name='subscribe_newsletter'),
+    path('profile/', ProfileView, name='profile'),
+    path("about/", about, name='about'),
+    path("contact/", ContactView, name='contact'),
+    path('delete_account/', delete_account, name='delete_account'),
     path('like/<slug:slug>', PostLike.as_view(), name='post_like'),
     path('update/<slug:slug>/', PostUpdateView.as_view(), name='post_update'),
     path('delete/<slug:slug>/', PostDeleteView.as_view(), name='post_delete'),
