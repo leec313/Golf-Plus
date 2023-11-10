@@ -1,9 +1,11 @@
-![Golf Plus Logo with blurred background](https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699368596/llt94awaqsuby0glnsgz.png)
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699368596/llt94awaqsuby0glnsgz.png" alt="Golf Plus Logo with background">
+</div>
 
 ![Responsive image](https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699369041/rhudnfd6wvgyaqewlx7h.png)
 ## A Django based Golf Blog
 
-Golf Plus is a blog website built on Django, offering users the ability to register, create, view, update, and delete posts and comments, as well as manage their accounts. Users can like and search for posts, customize their profiles, subscribe to the newsletter, and enjoy various other features.
+[Golf Plus](https://golf-plus-7affb451de4e.herokuapp.com/) is a blog website built on Django, offering users the ability to register, create, view, update, and delete posts and comments, as well as manage their accounts. Users can like and search for posts, customize their profiles, subscribe to the newsletter, and enjoy various other features.
 
 
 ## Table of Contents
@@ -226,3 +228,15 @@ How Golf Plus Fulfills These Needs:
 
 ## Visual Design
 ### Wireframes
+
+[Please follow this link to the Google Drive folder containing the wireframes](https://drive.google.com/drive/folders/1cYNyMMGgbE30l99TTqeWaAS3I05Bkjmw?usp=sharing)
+
+### Fonts
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699628429/zpfx0lknhocqaqbm0myh.png" alt="fonts">
+</div>
+
+- Clean Aesthetic: [Lato](https://fonts.google.com/specimen/Lato) (used for my headings) is a sans-serif font with a clean and modern aesthetic, making it suitable for a wide range of design applications. Its simplicity and readability contribute to a professional and polished look for the project. 
+- Versatility: [Roboto](https://fonts.google.com/specimen/Roboto?query=roboto), (used for my paragraphs, labels and links) another sans-serif font, offers versatility and readability across various screen sizes and resolutions. Its geometric shapes and open letterforms make it well-suited for both headlines and body text, ensuring a cohesive and adaptable typographic hierarchy.
+- Universal Legibility: Choosing sans-serif as the backup ensures universal legibility, especially on screens and digital platforms. Sans-serif fonts are known for their clarity and readability, making them a reliable fallback option in case any issues arise with the primary or secondary font choices.
+

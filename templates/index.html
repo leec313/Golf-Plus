@@ -58,8 +58,8 @@
                                 <h2 class="card-title text-uppercase">{{ post.title }}</h2>
                             </a>
                             <p class="card-text">
-                                <!-- If the excerpt exceeds 100 characters, it cuts it off -->
-                                {{ post.excerpt|slice:":100" }}{% if post.excerpt|length > 100 %}...{% endif %}
+                                <!-- If the excerpt exceeds 80 characters, it cuts it off -->
+                                {{ post.excerpt|slice:":80" }}{% if post.excerpt|length > 80 %}...{% endif %}
                             </p>
                             <hr>
                             <div class="card-text h6">

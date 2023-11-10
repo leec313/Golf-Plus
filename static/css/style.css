@@ -2,6 +2,22 @@ body {
     background-color: #F9FAFC;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: lato, sans-serif;
+    font-weight: bolder;
+}
+
+p,
+a,
+label {
+    font-family: roboto, sans-serif;
+}
+
 
 /* Hero slider carousel styling on index.html */
 .hero-container {
