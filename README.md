@@ -26,21 +26,8 @@
 
     - [Wireframes](#wireframes)
     - [Fonts](#fonts)
-    - [Icons](#icons)
     - [Colors](#colors)
-    - [Images](#images)
-    - [Styling](#styling)
     </details></li>
-
-    <li><details>
-    <summary><a href="#seamless-design">Seamless Design</a></summary>
-
-    - [Preloader](#preloader)
-    - [AJAX](#ajax)
-    - [Toasts](#toasts)
-    - [Infinite Scroll](#infinite-scroll)
-    </details></li>
-    </ul>
 </details>
 
 2. <details open>
@@ -51,13 +38,14 @@
     <summary><a href="#page-elements">Page Elements</a></summary>
 
     - [All Pages](#all-pages)
-    - [Product List Page](#product-list-page)
-    - [Product Detail Page](#product-detail-page)
-    - [Account Pages](#account-pages)
-    - [Likes Pages](#likes-pages)
-    - [Cart Pages](#cart-pages)
-    - [Checkout Pages](#checkout-pages)
-    - [Contact Pages](#contact-pages)
+    - [Homepage](#homepage)
+    - [Create Post Page](#create-post-page)
+    - [Post Detail Page](#post-detail-page)
+    - [Profile Page](#profile-page)
+    - [About Page](#about-page)
+    - [Login/Register Pages](#login/register-pages)
+    - [Confirm Delete Pages](#confirm-delete-pages)
+    - [Contact Page](#contact-page)
     </details></li>
 
     <li><details>
@@ -239,4 +227,63 @@ How Golf Plus Fulfills These Needs:
 - Clean Aesthetic: [Lato](https://fonts.google.com/specimen/Lato) (used for my headings) is a sans-serif font with a clean and modern aesthetic, making it suitable for a wide range of design applications. Its simplicity and readability contribute to a professional and polished look for the project. 
 - Versatility: [Roboto](https://fonts.google.com/specimen/Roboto?query=roboto), (used for my paragraphs, labels and links) another sans-serif font, offers versatility and readability across various screen sizes and resolutions. Its geometric shapes and open letterforms make it well-suited for both headlines and body text, ensuring a cohesive and adaptable typographic hierarchy.
 - Universal Legibility: Choosing sans-serif as the backup ensures universal legibility, especially on screens and digital platforms. Sans-serif fonts are known for their clarity and readability, making them a reliable fallback option in case any issues arise with the primary or secondary font choices.
+
+
+### Colors
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699965843/fwtahed8yimk96205yff.png" alt="colors">
+</div>
+
+- The combination of #2f4550 and #586f7c provides a cool and calming backdrop, creating a serene environment that aligns with the leisurely nature of golf.
+- Incorporating #b8dbd9 and #8c2f39 adds a touch of sophistication and contrast, making the design visually appealing and engaging for readers interested in both the sport and its lifestyle.
+
+
+# Features
+
+## Page Elements
+
+### All Pages
+
+#### Navbar
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699966901/gecdfbn6hie2f6dd8vij.png" alt="Desktop Navbar">
+</div>
+<div align="center">
+  <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699966901/c12gcr0by3emrloi66bv.png" alt="Mobile Navbar">
+</div>
+
+- The Navbar and footer are the two persistent items across the site. 
+- The logo is central on desktop and links to pages are on the left and the search function is on the right. 
+- On smaller screens, the logo is pushed to the left and the links to pages/search function is within a drop down menu. 
+- The well-known burger icon is used for the toggler. 
+- Authorisation functions switch depending on whether or not the user is logged in.
+
+#### Footer
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699967356/ykadgdfbmcnmbppaxluf.png" alt="Footer">
+</div>
+
+- The footer styling is the same across mobile and desktop, nothing really changes.
+- The dark background color and bright text allow for great contrast for users to easily make out the text and icon links.
+- The footer content includes the creator, the name of the website and the year of creation along with a copyright symbol.
+- Underneath, it includes social links: Facebook, Twitter, Instagram and YouTube.
+
+
+### Homepage
+
+#### Hero Slideshow
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699967835/aawpphvty3xtii3uogue.png" alt="Hero Slideshow">
+</div>
+
+- The Hero Slideshow includes 3 generic golf course images and utilises JavaScript in order to change image. 
+- This JavaScript code found within static/js/script.js is designed specifically for the index.html page or the root path (/).
+- Firstly, the code inside the function runs when the DOM (Document Object Model) has fully loaded.
+- It checks if the current page's URL path is either /index.html or just the root /. If true, the code proceeds to set up the slideshow.
+- It selects the HTML element with the class hero-carousel and all img elements within it. This assumes that the slideshow is implemented as a carousel with images.
+- It initializes a variable to keep track of the current index of the displayed image (let currentIndex = 0;).
+- The showImage function takes an index as an argument and shows the corresponding image while hiding the others. It adds the class active to the currently displayed image.
+- It initially shows the image at the index specified by currentIndex (showImage(currentIndex);).
+- The nextSlide function increments the currentIndex to display the next image. It uses the modulo operator to loop back to the first image when the end is reached.
+- This: setInterval(nextSlide, 5000); -  sets up an interval to call the nextSlide function every 5 seconds, creating an automatic slideshow effect.
 
