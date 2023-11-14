@@ -43,7 +43,7 @@
     - [Post Detail Page](#post-detail-page)
     - [Profile Page](#profile-page)
     - [About Page](#about-page)
-    - [Login/Register Pages](#login/register-pages)
+    - [Login/Register Pages](#login-and-register-pages)
     - [Confirm Delete Pages](#confirm-delete-pages)
     - [Contact Page](#contact-page)
     </details></li>
@@ -455,7 +455,7 @@ In summary, the code implements a detailed view for a post with features like li
 - The about page is just a simple page with text outlining the purpose of the site and an image underneath. 
 
 
-### Login/Register Pages
+### Login and Register Pages
 <div align="center">
  <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699978958/puj5zvo1kuaxuqlznqot.png" alt="Login">
 </div>
@@ -468,6 +468,12 @@ In summary, the code implements a detailed view for a post with features like li
 
 This Django application utilizes the django-allauth package for user account management and registration. django-allauth extends the built-in Django authentication system, providing features for user registration, authentication, password management, and account management. By using this package, the application streamlines the process of handling user accounts, offering a customizable and user-friendly interface for sign-up, login, and profile management. Additionally, the code snippet from django.contrib.auth.models import User suggests the usage of the default Django User model for handling user authentication and authorization. This combination of django-allauth and the User model from django.contrib.auth.models ensures a robust and secure user authentication system with extended functionality for user registration and account management.
 
+### Confirm Delete Pages
+<div align="center">
+ <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699980819/mhhhs5xakvaoquq7wohg.png" alt="Delete confirmation Page">
+</div>
+
+The confirm deletion pages are all fairly similar bar the wording and apply to deleting the user's posts, comments and profile. Each page has a corresponding view, url and template. 
 
 ### Contact Page
 <div align="center">
