@@ -1,5 +1,5 @@
 // This displays the newsletter after 5 seconds of page load
-// Then if the user enters an email and submits, or closes 
+// Then if the user enters an email and submits, refreshes the page, or closes 
 // the modal, it will not show again by using the browser cookies 
 
 document.addEventListener("DOMContentLoaded", function () {
