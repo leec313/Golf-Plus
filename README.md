@@ -28,6 +28,12 @@
     - [Fonts](#fonts)
     - [Colors](#colors)
     </details></li>
+
+    <li>
+    <a href="#agile-development">Agile Development</a>
+    </li>
+
+    </ul>
 </details>
 
 2. <details open>
@@ -48,59 +54,16 @@
     - [Contact Page](#contact-page)
     </details></li>
 
-    <li><details>
-    <summary><a href="#additional-features">Additional Features</a></summary>
-
-    - [General](#general)
-    - [Products](#products)
-    - [Users](#users)
-    - [Search Features](#search-features)
-    </details></li>
-
-    <li><details>
-    <summary><a href="#features-not-yet-implemented">Features Not Yet Implemented</a></summary>
-
-    - [Basic](#basic)
-    - [Content](#content)
-    - [User Features](#user-features)
-    </details></li>
+    <li>
+    <a href="#features-not-yet-implemented">Features Not Yet Implemented</a>
+    </li>
     </ul>
 </details>
 
-3. <details open>
-    <summary><a href="#information-architecture">Information Architecture</a></summary>
-
-    <ul>
-    <li><details>
-    <summary><a href="#database-structure">Database Structure</a></summary>
-
-    - [Details](#details)
-    - [Diagram](#diagram)
-    </details></li>    
-
-    <li><details>
-    <summary><a href="#data-models">Data Models</a></summary>
-
-    - [Checkout App](#checkout-app)
-    - [Contact App](#contact-app)
-    - [Products App](#products-app)
-    - [Users App](#users-app)
-    </details></li>
-    </ul>
-</details>
-
-4. <details open>
+3. 
     <summary><a href="#technologies-used">Technologies Used</a></summary>
 
-    - [Languages](#languages)
-    - [Frameworks](#frameworks)
-    - [Libraries](#libraries)
-    - [Packages](#packages)
-    - [Platforms](#platforms)
-    - [Other Tools](#other-tools)
-</details>
-
-5. <details open>
+4. <details open>
     <summary><a href="#testing">Testing</a></summary>
 
     <ul>
@@ -109,9 +72,7 @@
 
     - [Validation](#validation)
     - [Python Testing](#python-testing)
-    - [Coverage](#coverage)
-    - [Travis CI](#travis-ci)
-    - [Coveralls](#coveralls)
+
     </details></li>
 
     <li><details>
@@ -131,7 +92,7 @@
     </ul>
 </details>
 
-6. <details open>
+5. <details open>
     <summary><a href="#deployment">Deployment</a></summary>
 
     <ul>
@@ -151,7 +112,7 @@
     </ul>
 </details>
 
-7. <details open>
+6. <details open>
     <summary><a href="#credit-and-contact">Credit and Contact</a></summary>
 
     - [Images](#local-preparation)
@@ -237,6 +198,41 @@ How Golf Plus Fulfills These Needs:
 - The combination of #2f4550 and #586f7c provides a cool and calming backdrop, creating a serene environment that aligns with the leisurely nature of golf.
 - Incorporating #b8dbd9 and #8c2f39 adds a touch of sophistication and contrast, making the design visually appealing and engaging for readers interested in both the sport and its lifestyle.
 
+## Agile Development
+
+The inception of this project coincided with the creation of a GitHub Projects Page, serving as a pivotal tool for overseeing the anticipated tasks. The primary objective was to portray the expected workload systematically, create user stories, and subsequently break them down into more manageable tasks. This planning process aimed to provide a structured roadmap, facilitating a progression towards the completion of the project within the targeted timeframe. By leveraging the GitHub Projects Page, the project's evolution could be tracked, tasks assigned, and milestones achieved, ensuring a streamlined and organized development process.
+
+To see the project Kanban, [please follow this link here](https://github.com/users/leec313/projects/2/).
+
+I kicked off my project by envisioning its entire journey, starting with fundamental user stories like establishing the repository and workspace, progressing through essential tasks, and concluding with optional enhancements. Once the essentials were in order, I delved into additional features, including the search function and newsletter. What really captivated me was the adaptable approach of agile development. It allowed me to shape and refine the project gradually, embracing an agile mindset that brought excitement to the process. Overall, I found joy in the flexibility and step-by-step progress that agile development brought to the table.
+
+My Kanban board and commit messages were my trusty guides, helping me seamlessly resume my work and understand exactly where I left off. Each commit message acted as a snapshot of my progress, clarifying what I had just finished and outlining the next steps. Ticking off tasks within a user story became a satisfying routine, and once all the pieces fell into place for a user story, I marked it as closed. This action automatically shifted it to the "done" column on my board, signaling the completion of that particular part of the project. This straightforward system kept me organized and provided a clear visual of my accomplishments and the road ahead.
+
+### Core User Stories (Must-Have)
+
+- [USER STORY: Deploy website](https://github.com/leec313/Golf-Plus/issues/1)
+- [USER STORY: Admin Panel](https://github.com/leec313/Golf-Plus/issues/7)
+- [USER STORY: Create an account](https://github.com/leec313/Golf-Plus/issues/11)
+- [USER STORY: Base template](https://github.com/leec313/Golf-Plus/issues/15)
+- [USER STORY: Create/like a post/comment](https://github.com/leec313/Golf-Plus/issues/19)
+- [USER STORY: Delete user profile](https://github.com/leec313/Golf-Plus/issues/24)
+- [USER STORY: Testing](https://github.com/leec313/Golf-Plus/issues/29)
+
+### Additional User Stories (Should/Could-Have)
+
+While not initially integral to the core project, I identified three user stories early on that could significantly enhance both the website's functionality and, more crucially, meet the acceptance criteria for the project. Recognizing the need for a custom model in my database, I proceeded to create the Newsletter and Profile models to fulfill this requirement. Witnessing the final outcome of their implementation left me immensely satisfied, and the experience garnered from their incorporation proved to be highly educational. Additionally, the integration of a search function emerged as a valuable asset, particularly in scenarios where there is an extensive array of blog posts to navigate. This feature substantially improves the overall user experience by simplifying the process of sifting through a potentially large volume of content.
+
+- [USER STORY: Search & Find a post](https://github.com/leec313/Golf-Plus/issues/38)
+- [USER STORY: User Profile Page](https://github.com/leec313/Golf-Plus/issues/39)
+- [USER STORY: Newsletter Signup Form](https://github.com/leec313/Golf-Plus/issues/44)
+
+### Not Important, Nice to Have User Stories (Could-Have)
+
+Although the potential enhancements outlined in the "could-have" user stories were not integrated into the project due to time constraints, they remain viable options for future implementation. Social logins, for instance, offer a convenient and expedited user experience, facilitating quicker login and registration processes. Comment pagination, another prospective feature, holds the promise of enhancing user experience, especially when dealing with a substantial number of comments on a single post. This not only streamlines the presentation of comments but also simplifies the overall management of comment displays. Additionally, the incorporation of easily implementable icons for account login, profile viewing, and registration stands out as a straightforward yet effective means to elevate the overall user experience. While these features were deferred for now, they hold the potential to be valuable additions in subsequent project iterations.
+
+- [USER STORY: Social Logins](https://github.com/leec313/Golf-Plus/issues/37)
+- [USER STORY: Comment Pagination](https://github.com/leec313/Golf-Plus/issues/40)
+- [USER STORY: Create an account - Add icons if necessary for ease of use](https://github.com/leec313/Golf-Plus/issues/14)
 
 # Features
 
@@ -509,20 +505,115 @@ The confirm deletion pages are all fairly similar bar the wording and apply to d
 In summary, this implements a contact page with a form for users to submit their name, email, and a message. The form data is processed, saved to the database, and a success message is displayed upon successful submission. The contact model provides a structured way to store this information in the database.
 
 
+## Features Not Yet Implemented
+
+#### Social Sharing
+- Explore the implementation of a social media sharing feature to allow users to share their favorite posts on various social platforms.
+
+#### Follow/Private Messaging
+- Integrate a follow/Private message functionality on user profiles to foster engagement and interaction between users.
+
+#### Analytics
+- Consider adding a feature to track and display the number of views on each post, providing users with insights into the popularity of their content.
+
+#### User Admin
+- Explore the implementation of a user-friendly admin panel with additional features for content management, user moderation, and analytics.
+
+#### Post Categories or Tags
+- Implement a categorization system for posts, enabling users to filter and explore content based on specific topics or tags.
+
+#### Advanced Search Filters
+- Enhance the search functionality with advanced filters, allowing users to refine their search based on criteria such as date, author, or post category.
+
+#### User Notifications
+- Introduce a notification system to keep users informed about new comments, likes, or interactions on their posts and profile.
+
+#### Interactive Post Editor
+- Upgrade the post creation/editing interface to include a more interactive editor with formatting options, image embedding, and a preview feature.
+
+#### Featured Posts Section
+- Create a dedicated section to showcase featured or trending posts, providing users with a curated selection of high-quality content.
+
+#### Gamification Elements
+- Introduce gamification elements such as badges, achievements, or point systems to incentivize user engagement and contributions.
+
+#### Dark Mode
+- Implement a dark mode option for the website to cater to users who prefer a darker color scheme for improved visibility in low-light environments.
+
+#### Collaborative Writing
+- Enable multiple users to collaborate on a single post, fostering a sense of community and collective content creation.
 
 
 
+## Technologies Used
+
+### Html
+
+ - Used to structure my webpages and the base templating language
+
+### CSS
+
+ - Custom CSS was written on large chunks of this site to make it as close to the wireframes as I felt it needed to be.
+
+### JavaScript
+
+ -  Used to add timeout function for messages as well as to enable the menu on index.html
+
+### Python
+
+ -  Used for the logic in this project.
+
+### Django
+
+ -  Framework used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
+
+### Font Awesome
+
+ -  Used for the like/comment icons as well as the social media links in the footer.
+
+### Bootstrap 5
+
+ - Used as the base front end framework to work alongside Django
+
+### Jinja Templating with Django
+
+ - Used to render logic within html documents and make the website more dynamic.
+
+### GitHub
+
+ - Used to store the code for this project & for the projects Kanban board used to complete it.
+
+### Heroku
+
+- Used to host and deploy this project
+
+### Heroku PostgreSQL
+
+-Heroku PostgreSQL was used as the database for this project during development and in production.
+
+### Cloudinary
+
+- Used to host the static files for this project including user profile images.
+
+### Git
+
+- Used for version control throughout the project and to ensure a good clean record of work done was maintained.
 
 
+# Testing
+
+## Automated Testing
+
+### Validation
+
+- HTML has been validated with [W3C HTML5 Validator](https://validator.w3.org/)
+- CSS has been validated with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+- Links checked with [W3C Link Checker](https://validator.w3.org/checklink)
+- JavaScript was tested on the site for errors and functionality using the console and with [JSHint](https://jshint.com/)
+- Python has been validated using the [PEP8 Python Checker](https://www.pythonchecker.com/)
 
 
-
-
-
-
-
-
-
+### Python Testing
 
 
 
