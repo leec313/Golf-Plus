@@ -599,6 +599,9 @@ In summary, this implements a contact page with a form for users to submit their
 
 - Used for version control throughout the project and to ensure a good clean record of work done was maintained.
 
+### Gitpod
+
+- Used as IDE to develop the project.
 
 # Testing
 
@@ -610,7 +613,7 @@ In summary, this implements a contact page with a form for users to submit their
 - CSS has been validated with [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 - Links checked with [W3C Link Checker](https://validator.w3.org/checklink)
 - JavaScript was tested on the site for errors and functionality using the console and with [JSHint](https://jshint.com/)
-- Python has been validated using the [PEP8 Python Checker](https://www.pythonchecker.com/)
+- Python has been validated using the [PEP8 Python Checker](https://www.pythonchecker.com/) and Flake8 Extension within GitPod.
 
 
 #### Errors in validation

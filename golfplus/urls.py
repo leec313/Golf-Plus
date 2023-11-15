@@ -1,4 +1,4 @@
-# URLS.PY for all other views suc as newsletter, accounts, contact page etc.
+# URLS.PY for all other views such as accounts etc.
 from django.contrib import admin
 from django.urls import path, include
 from blog.views import (

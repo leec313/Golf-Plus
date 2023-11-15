@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.utils.text import slugify
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Post, Comment, NewsletterSubscription, Profile
+from .models import Post, Comment, NewsletterSubscription
 from .forms import (
     CommentForm,
     NewsletterSubscriptionForm,
@@ -53,7 +53,7 @@ class PostListView(ListView):
         queryset = super().get_queryset()
         search_query = self.request.GET.get('search', None)
 
-         # Use Q objects to combine filters with OR logic
+        # Use Q objects to combine filters with OR logic
         if search_query:
             queryset = queryset.filter(
                 Q(title__icontains=search_query) |
@@ -69,12 +69,11 @@ class PostListView(ListView):
                     When(title__icontains=search_query, then=1),
                     default=2
                 ),
-                "-created_on" # Additional ordering by created_on
+                "-created_on"  # Additional ordering by created_on
             )
 
         return queryset
 
-    
     def render_to_response(self, context, **response_kwargs):
         """
         If no posts found, return 'no_results'
@@ -83,7 +82,7 @@ class PostListView(ListView):
             context['no_results'] = True
 
         return super().render_to_response(context, **response_kwargs)
-        
+
 
 class PostDetailView(DetailView):
     """
@@ -100,6 +99,7 @@ class PostDetailView(DetailView):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
+            context['liked'] = liked
 
         # Adding the comment form to the context
         comment_form = CommentForm()
@@ -134,7 +134,7 @@ class PostDetailView(DetailView):
         # Add the comment form to the context
         context['comment_form'] = comment_form
         context['commented'] = True
-        
+
         # Add a message to inform the user
         messages.success(self.request, "Comment posted!")
 
@@ -295,30 +295,41 @@ def ProfileView(request):
 
     # Newsletter subscription form
     user_email = request.user.email
-    initial_subscription = NewsletterSubscription.objects.filter(email=user_email).exists()
-    newsletter_form = ProfileNewsletterUpdate(instance=request.user.profile, initial={'subscribe_newsletter': initial_subscription})
+    initial_subscription = NewsletterSubscription.objects.filter(
+        email=user_email).exists()
+    newsletter_form = ProfileNewsletterUpdate(
+        instance=request.user.profile, initial={
+            'subscribe_newsletter': initial_subscription})
 
     # Updating the user profile and newsletter subscription
     if request.method == 'POST':
         user_form = ProfileUpdateForm(request.POST, instance=request.user)
-        image_form = ImageUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        newsletter_form = ProfileNewsletterUpdate(request.POST, instance=request.user.profile)
+        image_form = ImageUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile)
+        newsletter_form = ProfileNewsletterUpdate(
+            request.POST, instance=request.user.profile)
 
-        if user_form.is_valid() and image_form.is_valid() and newsletter_form.is_valid():
+        if (user_form.is_valid() and
+                image_form.is_valid() and
+                newsletter_form.is_valid()):
             user_form.save()
             image_form.save()
 
             # Check if the checkbox is selected
-            subscribe_newsletter = newsletter_form.cleaned_data.get('subscribe_newsletter')
+            subscribe_newsletter = newsletter_form.cleaned_data.get(
+                'subscribe_newsletter')
 
             if subscribe_newsletter and not initial_subscription:
                 # User selected the checkbox and was not previously subscribed
                 NewsletterSubscription.objects.create(email=user_email)
-                messages.success(request, 'You are now subscribed to the newsletter.')
+                messages.success(
+                    request, 'You are now subscribed to the newsletter.')
             elif not subscribe_newsletter and initial_subscription:
                 # User unselected the checkbox and was previously subscribed
-                NewsletterSubscription.objects.filter(email=user_email).delete()
-                messages.success(request, 'You are unsubscribed from the newsletter.')
+                NewsletterSubscription.objects.filter(
+                    email=user_email).delete()
+                messages.success(
+                    request, 'You are unsubscribed from the newsletter.')
 
             return redirect('profile')
 
@@ -371,11 +382,14 @@ def ContactView(request):
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
 
+
 def custom_403(request, exception):
     return render(request, '403.html', status=403)
 
+
 def custom_400(request, exception):
     return render(request, '400.html', status=400)
+
 
 def custom_500(request):
     return render(request, '500.html', status=500)

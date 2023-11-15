@@ -20,7 +20,7 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
     actions = ['approve_posts']
-    
+
     # For bulk approval of posts
     def approve_posts(self, request, queryset):
         queryset.update(status=1)
