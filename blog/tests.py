@@ -29,7 +29,7 @@ class BlogTests(TestCase):
         # Creating a test comment associated with the test post and user
         self.comment = Comment.objects.create(
             body='Test Comment', post=self.post, user=self.user)
-        
+
         # URL for updating the post
         self.update_url = reverse(
             'post_update', kwargs={'slug': self.post.slug})
@@ -40,7 +40,7 @@ class BlogTests(TestCase):
 
     def test_post_list_view(self):
         """Testing the post list view"""
-        
+
         # Simulating a GET request to the 'post_list' URL
         response = self.client.get(reverse('post_list'))
         self.assertEqual(response.status_code, 200)
@@ -48,7 +48,7 @@ class BlogTests(TestCase):
 
     def test_post_create_view(self):
         """Testing the post create view"""
-        
+
         # Logging in with the test user
         self.client.login(username='testuser', password='testpassword')
 
@@ -78,7 +78,7 @@ class BlogTests(TestCase):
 
     def test_post_update_view(self):
         """Testing the post update view"""
-        
+
         self.client.login(username='testuser', password='testpassword')
 
         # Simulating a GET request to the 'post_update' URL
@@ -98,7 +98,7 @@ class BlogTests(TestCase):
 
     def test_post_delete_view(self):
         """Testing the post delete view"""
-        
+
         self.client.login(username='testuser', password='testpassword')
 
         # Simulating a GET request to the 'post_delete' URL
@@ -124,7 +124,7 @@ class BlogTests(TestCase):
 
     def test_post_comment(self):
         """Testing posting a comment on a post"""
-        
+
         self.client.login(username='testuser', password='testpassword')
 
         # Simulating a POST request to the 'post_detail' URL with comment data
@@ -176,7 +176,7 @@ class BlogTests(TestCase):
 
     def test_comment_delete_view(self):
         """Testing the comment delete view"""
-        
+
         self.client.login(username='testuser', password='testpassword')
 
         # Simulating a GET request to the 'comment delete' URL
