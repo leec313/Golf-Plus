@@ -112,6 +112,10 @@ label {
     overflow: hidden;
 }
 
+.masthead-image img {
+    width: 100%;
+}
+
 .masthead-image:after {
     content: "";
     position: absolute;

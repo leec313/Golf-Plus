@@ -14,10 +14,10 @@
                 <!-- If no image was uploaded by the user, the placeholder image will display -->
                 {% if "placeholder" in post.featured_image.url %}
                 <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698165554/c0y4ryigcx3ruzl0o58n.jpg"
-                    width="100%">
+                    alt="Placeholder Image for Posts">
                 <!-- Else the uploaded image will display -->
                 {% else %}
-                <img src=" {{ post.featured_image.url }}" width="100%">
+                <img src=" {{ post.featured_image.url }} " alt="{{ post.title }}">
                 {% endif %}
             </div>
         </div>
@@ -31,9 +31,7 @@
                 <!-- Post content goes within the card-body -->
                 <!-- Use the | safe filter inside the template tags: the safe filter is used to mark a string as safe for HTML output -->
                 <!-- Linebreaks: used to display text with line breaks in HTML, preserving the formatting from the original text that the user enters when creating a post. -->
-                <p class="card-text ">
-                    {{ post.content | safe | linebreaks }}
-                </p>
+                {{ post.content | safe | linebreaks }}
                 <div class="row">
                     <div class="col d-flex align-items-center">
                         <strong class="like-comments-detail">
