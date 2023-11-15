@@ -5,7 +5,7 @@ from django.contrib.messages import get_messages
 from .models import Post, Comment, NewsletterSubscription
 
 
-# UNCOMMENT LINES 129-135 IN SETTINGS.PY AND COMMENT LINES 138-140 
+# UNCOMMENT LINES 129-135 IN SETTINGS.PY AND COMMENT LINES 138-140
 # BEFORE RUNNING THE TESTS.PY
 
 

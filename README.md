@@ -631,9 +631,13 @@ It's referring to the help text that the form generates and how the ul element i
 Despite troubleshooting efforts with Code Institute's tutors, fellow students, and online resources, a solution couldn't be found. Interestingly, the login page, which uses form.as_p instead of crispy forms, doesn't encounter this error. Although form.as_p led to more warnings and errors on the signup page, the decision to stick with the crispy form method was made due to this particular error being the only issue.
 
 
-
 ### Python Testing
 
+#### Notes:
+
+* Tests have been written the views and maintaned throughout the project development.
+* The tests are contained in blog/tests.py. 
+* 
 
 
 
