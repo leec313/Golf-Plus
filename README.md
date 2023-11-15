@@ -92,33 +92,9 @@
     </ul>
 </details>
 
-5. <details open>
-    <summary><a href="#deployment">Deployment</a></summary>
+5. <a href="#deployment">Deployment</a>
 
-    <ul>
-    <li><details>
-    <summary><a href="#local-deployment">Local Deployment</a></summary>
-
-    - [Local Preparation](#local-preparation)
-    - [Local Instructions](#local-instructions)
-    </details></li>
-
-    <li><details>
-    <summary><a href="#heroku-deployment">Heroku Deployment</a></summary>
-
-    - [Heroku Preparation](#heroku-preparation)
-    - [Heroku Instructions](#heroku-instructions)
-    </details></li>
-    </ul>
-</details>
-
-6. <details open>
-    <summary><a href="#credit-and-contact">Credit and Contact</a></summary>
-
-    - [Images](#local-preparation)
-    - [Code](#local-instructions)
-    - [Contact](#contact)
-</details>
+6. <a href="#credits-and-acknowledgements">Credits and Acknowledgements</a>
 
 ----
 
@@ -633,16 +609,299 @@ Despite troubleshooting efforts with Code Institute's tutors, fellow students, a
 
 ### Python Testing
 
-#### Notes:
+#### Notes
 
 * Tests have been written the views and maintaned throughout the project development.
 * The tests are contained in blog/tests.py. 
-* 
+* A testing database has been setup in settings.py and will automatically be utilised when the test command is run.
+* This allows for more accurate testing and test views which function on a real Postgres database. 
+
+#### Running Tests
+
+1. Activate the virtual environment with the [deployed](#deployement) code.
+2. Input the following code into the terminal:
+    ```
+    python manage.py test
+    ```
+3. Results will be shown in the terminal.
+
+## Manual Testing
+
+Each user story was manually tested in line with intended functionality on both desktop & mobile.
+As this project was driven by my own User Stories I  felt manual testing was applicable on all logic code.
+
+If the intended outcome completes then this will be flagged as pass. If it does not then this is a fail.
+
+#### Account Registration Tests
+| Test |Result  |
+|--|--|
+| User can create account | Pass |
+| User can log into account| Pass|
+|User can log out of account|Pass|
+
+---
+
+#### User Navigation Tests
+
+| Test |Result  |
+|--|--|
+|User can navigate to all pages | Pass |
+|User can view navigation items| Pass|
+|User access account profile page|Pass|
+|User can access posts|Pass|
+|SuperUser can access admin panel|Pass|
+
+---
+
+#### Account Security Tests
+
+| Test |Result  |
+|--|--|
+|Non logged in user cannot like/comment/create a post | Pass |
+|Non logged in user cannot access profile page| Pass|
+|Non superuser cannot access admin panel|Pass|
+
+---
+
+#### Posting Tests
+
+| Test |Result  |
+|--|--|
+|User can make a post when all required fields complete | Pass |
+|User cannot submit post with empty form |Pass|
+|User can view their posts from profile|Pass|
+|User can edit post while status is awaiting approval |Pass|
+|User can delete post while status is awaiting approval|Pass|
+|Edit button does present on posts created by user|Pass|
+|Delete button does present on posts created by user |Pass|
+
+--- 
+
+#### Profile Tests
+
+| Test |Result  |
+|--|--|
+|User can edit their user name and email from the profile page | Pass |
+|User can edit / add a profile image from the profile page |Pass|
+|User can edit their newsletter subscription status from their profile page| Pass|
+|User cannot change username to the same as another user|Pass|
+|User cannot change their email to the same as another user |Pass|
+|User presented with confirmation when they click delete|Pass|
+|User can delete account |Pass|
 
 
+#### Admin Tests
+
+| Test |Result  |
+|--|--|
+|Admin can add items to posts|Pass|
+|Admin can add items to comments|Pass|
+|Admin can add items to profiles|Pass|
+|Admin can edit items in posts|Pass|
+|Admin can edit items in comments|Pass|
+|Admin can edit items in profiles|Pass|
+|Admin can delete items in posts|Pass|
+|Admin can delete items in comments|Pass|
+|Admin can delete items in profiles|Pass|
+|Items display correctly on front-end when updated / added|Pass|
+
+---
+
+### General Testing
+- Each time a feature was added, all the functions were tested to see if there was an impact.
+- The views have been thoroughly manually tested and refined over time, utilising python features to update the database in a useful, flexible structure.
+- The site was sent to friends for feedback and testing.
+- All forms have validation and will not submit without the proper information.
+
+### Mobile Testing
+- I tested the site personally on my Android device, going through the entire process, checking buttons, CRUD functionality etc.
+- The site was sent to friends and relatives for them to follow the same process. They have tested on their devices, including iOS.
+- Chrome was utilised to inspect the site in mobile format, going through the pages, functions and responsiveness.
+
+### Desktop Testing
+- The site was developed on a Dell G3 Laptop and the majority of testing occurred on Chrome.
+- The site was tested by friends and relatives on numerous desktop devices.
+- The site was marginally tested on other browsers, such as Firefox and Edge.
+- Internet Explorer was not tested and the site was not developed with it in mind as support for the browser is gradually being dropped.
 
 
+## Bugs
+
+### Known Bugs
+
+- After trying to implement email authentication via email within the Gitpod environment, [I found this GitHub issue here](https://github.com/gitpod-io/gitpod/issues/965).
+It confirmed the ports used to send emails from Gitpod were blocked. I wanted to set up email confirmation on account creation and also forgot password links etc. 
+One user stated: 
+
+"yes, indeed we recently started blocking port 587 to prevent spammers from using it.
+Port 25 was never open, because it's blocked by default in Google Cloud Platform."
+
+I was following [this tutorial on YouTube](https://www.youtube.com/watch?v=wB1qOExDsYY) in order to achieve this but since it's not possible via Gitpod, I had to stop. 
+Although this did not end up working, I did learn a lot in relation to setting this up within the Django system.
+I soon found out later that this issue does not occur on Heroku when deployed as the ports are not blocked by them, however it was too late at this stage. I will be implementing this in a future project for sure. 
+
+### Fixed Bugs
+
+- When setting up the profile image for users Profile page, the placeholder image was showing a broken link. 
+After many attempts to fix this, it was not working for me, so I hardcoded the Cloudinary link into the Profile modellike so: 
+![Placeholder bug image](https://github.com/leec313/Golf-Plus/assets/1553915/c296285a-30dc-41da-8b85-af83bd152620)
+
+This worked for me. 
+I then added #noqa to the end of the line in the model as the line was too long and any attempt to shorten it via line breaks was not working. 
+
+- When I removed the following piece of code from the index.html: 
+
+```html
+{% if forloop.counter|divisibleby:3 %}
+``` 
+
+And implemented the display of the number of posts via Bootstrap, it caused issues with the search feature. 
+When searching for posts, it was not displaying any valid posts related to the search query. 
+After hours of trying to find a solution, I decided to revert back to using the forloop counter in order to have my search function work again.
+This was not really the outcome I was hoping for, however playing around with different Bootstrap classes got me to where I wanted to be in this situation and the posts display the way I want them to. 
 
 
+- My tests were failing due to the alert messages. I Searched online and found this:
+In Django tests, messages are stored in response.wsgi_request._messages. 
+
+My original code was trying to access response.context['messages'], which resulted in a TypeError because the messages were not directly available in the context.
+By changing syntax to response.wsgi_request._messages, it fixed the issue. 
+
+- Static files were not loading on the deployed version of the site. I was confused because the setup looked correct. After inspecting my settings.py file, I realised that there was an issue with one of the cloudinary related lines and made the change to fix it. I resolved this quite quickly and continued on with the project. 
+
+- After implementing the newsletter subscription modal, I soon realised that it was popping up on every page reload of the index.html. I needed to implement some form of JavaScript that captured the current user's browser cookie and stored it. Knowing that if the current session already had the pop up displayed, it would not display again. 
+
+- Because the User account and profiles are two separate models, when a user created an account, they did not have a profile. This meant they could not view the profile page template and Django through an error. I soon fixed this by creating a signal so that when a user registers for an account, a profile is created for them too.
 
 
+## Google Lighthouse Testing
+
+### Desktop
+
+> index.html
+
+
+![Google Lighthouse Index]()
+
+> profile.html
+
+
+![Google Lighthouse Profile]()
+
+
+# Deployment
+
+> I have broken up the deployment into two sections as it is quite extensive and can be hard to follow.
+
+To deploy the project through Heroku I followed these steps:
+
+- Sign up / Log in to  [Heroku](https://www.heroku.com/)
+- From the main Heroku Dashboard page select 'New' and then 'Create New App'
+- Give the project a name - I decided on Golf Plus and selected EU as that is the closes region to me.
+- After this you select select create app. 
+- The name for the app must be unique or you will not be able to continue.
+- Heroku will create the app and bring you to the deploy tab. 
+- From the submenu at the top, navigate to the resources tab.
+- Add the database to the app, I created mine via ElephantSQL.
+- Open the config vars section copy the DATABASE_URL to the clipboard for use in the Django configuration.
+- Inside the Django app repository create a new file called env.py
+- within this file import the os library and set the environment variable for the DATABASE_URL pasting in the address copied from ElephantSQL. 
+- The line should appear as os.environ["DATABASE_URL"]= "Paste the link in here"
+-   Add a secret key to the app using os.environ["SECRET_KEY"] = "your secret key goes here"
+-   Add the secret key just created to the Heroku Config Vars as SECRET_KEY for the KEY value and the secret key value you created as the VALUE
+-   In the settings.py file within the django app, import Path from pathlib, import os and import dj_database_url
+-   insert the line if os.path.isfile("env.py"): import env
+-   remove the insecure secret key that django has in the settings file by default and replace it with SECRET_KEY = os.environ.get('SECRET_KEY')
+-   replace the databases section with DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))} ensure the correct indentation for python is used.
+-   In the terminal migrate the models over to the new database connection
+---
+-   Navigate in a browser to cloudinary, log in, or create an account and log in.
+-   From the dashboard - copy the CLOUDINARY_URL to the clipboard
+-   In the env.py file - add os.environ["CLOUDINARY_URL"] = "paste in the Url copied to the clipboard here"
+-   In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
+-   Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars
+-   this key value pair must be removed prior to final deployment
+-   Add the cloudinary libraries to the list of installed apps, the order they are inserted is important, 'cloudinary_storage' goes above 'django.contrib.staitcfiles' and 'cloudinary' goes below it.
+-   in the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+-   Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+-   Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
+-   Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
+-   In your code editor, create three new top level folders, media, static, templates
+-   Create a new file on the top level directory - Procfile
+-   Within the Procfile add the code - web: guincorn PROJECT_NAME.wsgi
+-   In the terminal, add the changed files, commit and push to GitHub
+-   In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
+-   Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+#### Forking the repository
+
+By forking the GitHub Repository you can make a copy of the original repository to view or change without it effecting the original repository.
+You can do this by: 
+-  Logging into GitHub or create an account. 
+- Locate the repository at  [here](https://github.com/leec313/Golf-Plus)  . 
+-  At the top of the repository, on the right side of the page, select "Fork" from the buttons available. 
+-  A copy of the repository should now be created in your own repository.
+
+#### Create a clone of this repository
+
+Creating a clone enables you to make a copy of the repository at that point in time - this lets you run a copy of the project locally: This can be done by:
+
+-   Navigate to [the repository](https://github.com/leec313/Golf-Plus)
+-   click on the arrow on the green code button at the top of the list of files
+-   select the clone by https option and copy the URL it provides to the clipboard
+-   navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
+-   type 'git clone' and paste the https link you copied from github
+-   press enter and git will clone the repository to your local machine
+
+
+## Credits and Acknowledgements
+
+### Images
+
+- Hero Slideshow images: 
+    * https://unsplash.com/photos/green-grass-field-near-mountain-during-daytime-xyA32yjWFlg
+    * https://www.top100golfcourses.com/golf-course/tralee
+    * https://www.druidsglenresort.com/book-a-tee-time.html
+
+- About Page image: 
+    * https://unsplash.com/photos/golf-ball-on-green-grass-field-during-daytime-awin-9RBlpE
+
+- Logo: 
+    * I created the logo myself in Photoshop
+
+### Content and Resources
+
+- I went through the bootstrap documentation to determine how best to approach my desired design. I always find the getbootstrap.com helpful with examples of how best to implement boostrap components.
+    * https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+
+- I found Corey Schafer's YouTube series on Django extremely helpful in explaining how the fundamentals of Django work and really enjoyed the videos.
+    * https://youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&si=D9s9IU-DV2VH6nmg
+
+- Django Documentation
+    *  Read through the django documentation multiple times when trying to implement models and other content.
+  
+-  W3 Schools
+    *  Used for reference throughout for simple css examples.
+  
+-  Code Institute
+    - The course content for portfolio project 4 played a crucial role in providing the necessary knowledge and skills to successfully complete this project.
+    The structured and comprehensive nature of the course content contributed significantly to my understanding of the project requirements and the Django framework.
+    Informative and Well-Paced Walkthroughs:
+
+    - The walkthroughs provided in the course were not only informative but also well-paced, allowing for a step-by-step understanding of the concepts and implementation details.
+    The clarity of the walkthroughs helped in grasping complex topics and reinforced a solid foundation in Django development.
+    Initial Structure Based on CI Walkthrough:
+
+    - During the early stages of the project, I leaned heavily on the Code Institute (CI) walkthrough for guidance.
+    The initial structure of the project was influenced by the CI walkthrough, serving as a scaffold until I gained a deeper understanding of the Django framework and could confidently make personalized modifications.
+    Legacy Code Regarding Nav:
+
+    - There are remnants of legacy code related to the navigation structure in the project.
+    While these aspects may reflect the early stages of development, I acknowledge the presence of legacy code, and future iterations of the project could involve refactoring and optimizing the navigation structure.
+
+
+### Acknowledgements
+
+I want to express my gratitude to the exceptional team at Code Institute, particularly my mentor Rory Patrick and my cohort Alan Bushell, for their unwavering support during the entire project. The guidance and encouragement I received were instrumental in overcoming challenges and achieving success.
+A heartfelt thank you extends to all the tutors and fellow students at Code Institute. The collaborative and supportive community created a conducive learning environment. The insights, shared experiences, and camaraderie greatly enriched my journey, making it a memorable and rewarding experience.

@@ -53,6 +53,27 @@ class ProfileUpdateForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+
+        # Check if the email is already taken by another user
+        if User.objects.filter(
+                email=email).exclude(username=username).exists():
+            raise forms.ValidationError(
+                'This email address is already in use.')
+        return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        email = self.cleaned_data.get('email')
+
+        # Check if the username is already taken by another user
+        if User.objects.filter(
+                username=username).exclude(email=email).exists():
+            raise forms.ValidationError('This username is already in use.')
+        return username
+
 
 class ProfileNewsletterUpdate(forms.ModelForm):
     """
