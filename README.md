@@ -618,7 +618,7 @@ Despite troubleshooting efforts with Code Institute's tutors, fellow students, a
 
 #### Running Tests
 
-1. Activate the virtual environment with the [deployed](#deployement) code.
+1. Activate the virtual environment with the deployed code.
 2. Input the following code into the terminal:
     ```
     python manage.py test
