@@ -15,12 +15,12 @@
                 {% else %}
                 <div class="hero-container">
                     <div class="hero-carousel">
-                        <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1698685630/xflcvt9agv2lsnpi88fr.jpg"
-                            alt="Scenic View Golf Course">
-                        <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699124451/gttifsmzjclrgninbgtd.jpg"
-                            alt="Druid's Glen Golf Course">
-                        <img src="https://res.cloudinary.com/dc9f7ztkr/image/upload/v1699124628/oxqs1hkphj6gujv5ajmb.webp"
-                            alt="Scenic View of Tralee Golf Course">
+                        <img src="https://raw.githubusercontent.com/leec313/Golf-Plus/main/static/media/hero_1.webp"
+                            alt="Scenic View Golf Course" width="1200" height="400">
+                        <img src="https://raw.githubusercontent.com/leec313/Golf-Plus/main/static/media/hero_3.webp"
+                            alt="Druid's Glen Golf Course" width="1200" height="400">
+                        <img src="https://raw.githubusercontent.com/leec313/Golf-Plus/main/static/media/hero_2.webp"
+                            alt="Scenic View of Tralee Golf Course" width="1200" height="400">
                     </div>
                     <a href="{% url 'about' %}">
                         <div class="hero-text">
@@ -40,7 +40,7 @@
                                 {% if "placeholder" in post.featured_image.url %}
                                 <a href="{% url 'post_detail' post.slug  %}" aria-label="{{ post.title }}"><img
                                         class="card-img-top" alt=" {{ post.title }} "
-                                        src="https://images.unsplash.com/photo-1538648759472-7251f7cb2c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80">
+                                        src="https://raw.githubusercontent.com/leec313/Golf-Plus/main/static/media/placeholder_post.webp">
                                 </a>
                                 <!-- Else displays the uploaded image -->
                                 {% else %}
