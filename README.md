@@ -780,13 +780,15 @@ By changing syntax to response.wsgi_request._messages, it fixed the issue.
 
 > index.html
 
-
-![Google Lighthouse Index]()
+![Google Lighthouse Index](https://res.cloudinary.com/dc9f7ztkr/image/upload/v1700243210/pdgdrzugwkgrslqax7at.png)
 
 > profile.html
 
+![Google Lighthouse Profile](https://res.cloudinary.com/dc9f7ztkr/image/upload/v1700243210/kyutnxcctvfsksn4olzp.png)
 
-![Google Lighthouse Profile]()
+In my exploration of Lighthouse performance scores, I identified a potential issue related to serving static assets efficiently, particularly in the context of using Cloudinary. This raised awareness about the significant impact on the performance score due to the choice of media storage solutions. For future projects, I am inclined to explore alternative methods for storing media that align more favorably with performance optimization goals.
+
+Another noteworthy consideration emerged in the context of serving images in next-gen formats. While Lighthouse suggests utilizing next-gen formats like .webp for improved performance, the practical implementation faced challenges in a user-generated content environment. Allowing users to freely upload various image formats complicates enforcing a strict .webp-only policy. While automatic conversion mechanisms exist, implementing such a feature would require additional time and resources. Given the constraints of the project timeline, I opted for a pragmatic approach, acknowledging the trade-off between performance optimization and user convenience.
 
 
 # Deployment
